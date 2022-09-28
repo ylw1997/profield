@@ -1,9 +1,9 @@
 /*
  * @Author: yangliwei 1280426581@qq.com
  * @Date: 2022-09-26 14:25:58
- * @LastEditTime: 2022-09-27 15:45:33
+ * @LastEditTime: 2022-09-28 15:19:10
  * @LastEditors: yangliwei 1280426581@qq.com
- * @FilePath: \vite-npm\src\types\index.ts
+ * @FilePath: \vite-npm\src\types\index.d.ts
  * Copyright (c) 2022 by yangliwei 1280426581@qq.com, All Rights Reserved. 
  * @Description: 
  */
@@ -12,6 +12,12 @@ import { RuleType } from "ant-design-vue/lib/form/interface";
 import { DefaultOptionType } from "ant-design-vue/lib/select";
 import { ColumnType } from "ant-design-vue/lib/table";
 import { ComputedRef } from "vue";
+import {
+  DatePickerProps,
+  InputProps,
+  SelectProps,
+  UploadProps,
+} from "ant-design-vue";
 
 export type ColumnsTypes =
   | "text"
@@ -32,7 +38,12 @@ export type ColumnsTypes =
   | "password"
   | "cascader";
 
-  export interface columnItem extends ColumnType {
+  export interface columnItem
+  extends ColumnType,
+    UploadProps,
+    SelectProps,
+    InputProps,
+    DatePickerProps {
   title: string;
   dataIndex: string;
   options?: DefaultOptionType[] | ComputedRef<DefaultOptionType[]>; //下拉选择框
