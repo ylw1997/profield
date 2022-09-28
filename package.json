@@ -1,6 +1,6 @@
 {
   "name": "profield",
-  "version": "1.12.0",
+  "version": "1.12.1",
   "type": "module",
   "main": "./dist/lib.umd.js",
   "module": "./dist/lib.es.js",
