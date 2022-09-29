@@ -1,15 +1,14 @@
 /*
  * @Author: YangLiwei
  * @Date: 2021-01-14 18:07:03
- * @LastEditTime: 2022-09-28 13:53:31
+ * @LastEditTime: 2022-09-29 17:01:46
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\hooks\useForm.ts
  * @Description:formhook
  */
 import { ref, watchEffect } from "vue";
 import { ValidateItemType } from "../utils/index";
-import { RuleObject } from "ant-design-vue/lib/form";
-import { columnItem } from "../types";
+import { columnItem, RuleObject } from "../types";
 import { convertFormDataToData } from "../utils/form";
 /**
  * 表单hook,在model中可以用:cancel,submit封装
