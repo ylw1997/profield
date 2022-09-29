@@ -1,7 +1,7 @@
 /*
  * @Author: yangliwei 1280426581@qq.com
  * @Date: 2022-09-26 14:25:58
- * @LastEditTime: 2022-09-28 15:19:10
+ * @LastEditTime: 2022-09-29 13:58:20
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\types\index.d.ts
  * Copyright (c) 2022 by yangliwei 1280426581@qq.com, All Rights Reserved. 
@@ -9,9 +9,8 @@
  */
 import { RuleObject } from "ant-design-vue/lib/form";
 import { RuleType } from "ant-design-vue/lib/form/interface";
-import { DefaultOptionType } from "ant-design-vue/lib/select";
 import { ColumnType } from "ant-design-vue/lib/table";
-import { ComputedRef } from "vue";
+import { ComputedRef, Ref } from "vue";
 import {
   DatePickerProps,
   InputProps,
@@ -38,15 +37,21 @@ export type ColumnsTypes =
   | "password"
   | "cascader";
 
-  export interface columnItem
-  extends ColumnType,
-    UploadProps,
-    SelectProps,
-    InputProps,
-    DatePickerProps {
+export interface BaseOptionType {
+  disabled?: boolean;
+  [name: string]: any;
+}
+export interface DefaultOptionType extends BaseOptionType {
+  label?: any;
+  value?: string | number | null;
+  children?: Omit<DefaultOptionType, 'children'>[];
+}
+
+export interface columnItem
+  extends ColumnType {
   title: string;
   dataIndex: string;
-  options?: DefaultOptionType[] | ComputedRef<DefaultOptionType[]>; //下拉选择框
+  options?: DefaultOptionType[] | ComputedRef<DefaultOptionType[]> | Ref<DefaultOptionType[]> | undefined | Ref<DefaultOptionType[] | undefined>; //下拉选择框
   notShowInSearch?: boolean; //是否展示在查询表单
   notShowInAddOrEdit?: boolean; //不在添加或编辑的时候展示
   notShowInTable?: boolean; //不在表格显示

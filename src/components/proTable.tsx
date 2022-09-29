@@ -1,7 +1,7 @@
 /*
  * @Author: YangLiwei
  * @Date: 2022-06-27 10:13:31
- * @LastEditTime: 2022-09-28 15:00:34
+ * @LastEditTime: 2022-09-29 13:57:12
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\components\proTable.tsx
  * @Description: 表格封装
@@ -27,8 +27,9 @@ import {
 } from "@ant-design/icons-vue";
 import { SizeType } from "ant-design-vue/es/config-provider";
 import { MenuClickEventHandler } from "ant-design-vue/lib/menu/src/interface";
-import useTable from "../hooks/userTable";
+import useTable from "../hooks/useTable";
 import { columnItem } from "../types";
+import { TableColumns } from '../utils/index';
 export default defineComponent({
   name:"proTable",
   components: {
@@ -233,7 +234,3 @@ export default defineComponent({
     );
   },
 });
-function TableColumns(columns: any): columnItem[] {
-  throw new Error("Function not implemented.");
-}
-

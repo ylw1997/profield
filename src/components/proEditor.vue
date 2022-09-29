@@ -1,7 +1,7 @@
 <!--
  * @Author: YangLiwei
  * @Date: 2022-07-18 15:15:38
- * @LastEditTime: 2022-09-28 15:03:08
+ * @LastEditTime: 2022-09-29 09:27:23
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\components\proEditor.vue
  * @Description: 
@@ -24,7 +24,12 @@
     />
   </div>
 </template>
-<script setup name="proEditor" lang="ts">
+<script lang="ts">
+export default {
+  name: "proEditor",
+}
+</script>
+<script setup lang="ts">
 import "@wangeditor/editor/dist/css/style.css";
 import { Editor, Toolbar } from "@wangeditor/editor-for-vue"; // 引入 css
 import { shallowRef, ref, watch, Prop } from "vue";

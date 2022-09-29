@@ -1,7 +1,7 @@
 <!--
  * @Author: YangLiwei
  * @Date: 2021-05-16 13:26:30
- * @LastEditTime: 2022-09-28 15:01:43
+ * @LastEditTime: 2022-09-29 09:28:17
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\components\searchForm.vue
  * @Description: 
@@ -39,8 +39,12 @@
     </Form>
   </div>
 </template>
-
-<script lang="ts" name="searchForm" setup>
+<script lang="ts">
+  export default {
+    name: "searchForm",
+  }
+</script>
+<script lang="ts" setup>
 import ProField from "./proField";
 import { Form, FormItem, Space, Button, Row, Col } from "ant-design-vue";
 import { useSlots, watch } from "vue";

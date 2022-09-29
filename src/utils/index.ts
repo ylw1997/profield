@@ -4,7 +4,7 @@ import { columnItem } from '../types/index';
 /*
  * @Author: yangliwei 1280426581@qq.com
  * @Date: 2022-09-27 13:55:41
- * @LastEditTime: 2022-09-28 14:27:51
+ * @LastEditTime: 2022-09-29 10:15:34
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\utils\index.ts
  * Copyright (c) 2022 by yangliwei 1280426581@qq.com, All Rights Reserved. 
@@ -82,4 +82,8 @@ export const guid = (): string => {
  */
  export const Copy = (text: string) => {
   return navigator.clipboard.writeText(text);
+};
+
+export const TableColumns = (columns: columnItem[]): any[] => {
+  return columns.filter((item) => !item.notShowInTable);
 };

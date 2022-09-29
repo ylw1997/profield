@@ -1,7 +1,7 @@
 <!--
  * @Author: YangLiwei
  * @Date: 2021-03-30 11:30:01
- * @LastEditTime: 2022-09-28 15:13:38
+ * @LastEditTime: 2022-09-29 09:27:51
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\components\proForm.vue
  * @Description: 
@@ -91,8 +91,12 @@
     </Form>
   </ProPanel>
 </template>
-
-<script lang="ts" name="proForm" setup>
+<script lang="ts">
+  export default {
+    name: "proForm",
+  }
+</script>
+<script lang="ts" setup>
 import useForm from "../hooks/useForm";
 import ProField from "./proField";
 import { Form, FormItem, Row, Col, Button } from "ant-design-vue";
