@@ -1,7 +1,7 @@
 /*
  * @Author: yangliwei 1280426581@qq.com
  * @Date: 2022-09-26 17:00:18
- * @LastEditTime: 2022-09-30 11:46:21
+ * @LastEditTime: 2022-09-30 14:48:51
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\index.ts
  * Copyright (c) 2022 by yangliwei 1280426581@qq.com, All Rights Reserved. 
@@ -14,17 +14,16 @@ import proForm from "./components/proForm.vue";
 import proPanel from "./components/proPanel"
 import proTable from "./components/proTable"
 import lookField from "./components/lookField"
-import proEditor from "./components/proEditor.vue"
 import { columnItem, ColumnsTypes, DefaultOptionType, RuleObject, RuleType } from './types/index';
 import useForm from './hooks/useForm';
 import useTable from './hooks/useTable';
 
 //实现按需引入*
-export { proField, YUpload, proForm, proPanel, proTable, lookField, useForm, useTable,proEditor }
+export { proField, YUpload, proForm, proPanel, proTable, lookField, useForm, useTable }
 
 export type { ColumnsTypes, columnItem, DefaultOptionType, RuleObject, RuleType }
 
-const components = [proField, YUpload, proForm, proPanel, proTable, lookField,proEditor];
+const components = [proField, YUpload, proForm, proPanel, proTable, lookField];
 
 const install = (app: App) => {
     components.forEach((component) => {
