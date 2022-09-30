@@ -1,7 +1,7 @@
 /*
  * @Author: yangliwei 1280426581@qq.com
  * @Date: 2022-09-26 14:10:44
- * @LastEditTime: 2022-09-30 11:26:13
+ * @LastEditTime: 2022-09-30 14:05:23
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\vite.config.ts
  * Copyright (c) 2022 by yangliwei 1280426581@qq.com, All Rights Reserved. 
@@ -36,28 +36,16 @@ export default defineConfig({
       input: ["src/index.ts"],
       output: [{
         format: "es",
-        entryFileNames: '[name].es.js',
+        entryFileNames: '[name].js',
         dir: 'dist',
-        name: 'index',
-        manualChunks:{
-          // "ant-design-vue": ["ant-design-vue"],
-          "ant-design-icon": ["@ant-design/icons-vue"],
-          "wangeditor": ["@wangeditor/editor-for-vue",'@wangeditor/editor'],
-        }
+        // preserveModules: true,
+        // preserveModulesRoot: 'src',
+        // manualChunks:{
+        //   // "ant-design-vue": ["ant-design-vue"],
+        //   "ant-design-icon": ["@ant-design/icons-vue"],
+        //   "wangeditor": ["@wangeditor/editor-for-vue",'@wangeditor/editor'],
+        // }
       }
-      // , {
-      //   format: "umd",
-      //   entryFileNames: '[name].umd.js',
-      //   dir: 'dist',
-      //   name: 'index',
-      //   // inlineDynamicImports:false,
-      //   // preserveModules: true,
-      //   // preserveModulesRoot: 'src',
-      //   // manualChunks:{
-      //   //   "ant-design-icon": ["@ant-design/icons-vue"],
-      //   //   "wangeditor": ["@wangeditor/editor-for-vue",'@wangeditor/editor'],
-      //   // }
-      // }
     ]
     },
   },

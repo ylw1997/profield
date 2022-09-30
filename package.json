@@ -1,18 +1,20 @@
 {
   "name": "profield",
-  "version": "1.22.9",
+  "version": "1.23.0",
   "type": "module",
-  "main": "./dist/index.es.js",
-  "module": "./dist/index.es.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
     "dist/*",
+    "dist/node_modules/*",
     "readme.md",
     "package.json"
   ],
   "exports": {
     ".": {
-      "import": "./dist/index.es.js"
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
     },
     "./dist/editor.css": {
       "import": "./dist/style.css",
