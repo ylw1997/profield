@@ -1,20 +1,23 @@
 {
   "name": "profield",
-  "version": "1.22.0",
+  "version": "1.22.9",
   "type": "module",
-  "main": "./dist/index.umd.js",
+  "main": "./dist/index.es.js",
   "module": "./dist/index.es.js",
   "types": "./dist/index.d.ts",
   "files": [
-    "dist/*"
+    "dist/*",
+    "readme.md",
+    "package.json"
   ],
   "exports": {
     ".": {
-      "import": "./dist/index.es.js",
-      "require": "./dist/index.umd.js"
+      "import": "./dist/index.es.js"
     },
-    "./package.json": "./package.json",
-    "./readme.md": "./readme.md"
+    "./dist/editor.css": {
+      "import": "./dist/style.css",
+      "require": "./dist/style.css"
+    }
   },
   "scripts": {
     "dev": "vite",

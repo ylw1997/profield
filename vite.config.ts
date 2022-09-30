@@ -1,7 +1,7 @@
 /*
  * @Author: yangliwei 1280426581@qq.com
  * @Date: 2022-09-26 14:10:44
- * @LastEditTime: 2022-09-29 09:41:16
+ * @LastEditTime: 2022-09-30 11:26:13
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\vite.config.ts
  * Copyright (c) 2022 by yangliwei 1280426581@qq.com, All Rights Reserved. 
@@ -27,18 +27,38 @@ export default defineConfig({
   build: {
     lib: {
       entry: path.resolve(__dirname, 'src/index.ts'),
+      formats: ['es'],
       name: 'index',
-      // fileName:"proField"
       fileName: (format) => `index.${format}.js`,
     },
     rollupOptions: {
-      external: ['vue'],
-      input:["src/index.ts"],
-      output: {
-        globals: {
-          vue: 'Vue'
-        },
+      external: ['vue','ant-design-vue'],
+      input: ["src/index.ts"],
+      output: [{
+        format: "es",
+        entryFileNames: '[name].es.js',
+        dir: 'dist',
+        name: 'index',
+        manualChunks:{
+          // "ant-design-vue": ["ant-design-vue"],
+          "ant-design-icon": ["@ant-design/icons-vue"],
+          "wangeditor": ["@wangeditor/editor-for-vue",'@wangeditor/editor'],
+        }
       }
+      // , {
+      //   format: "umd",
+      //   entryFileNames: '[name].umd.js',
+      //   dir: 'dist',
+      //   name: 'index',
+      //   // inlineDynamicImports:false,
+      //   // preserveModules: true,
+      //   // preserveModulesRoot: 'src',
+      //   // manualChunks:{
+      //   //   "ant-design-icon": ["@ant-design/icons-vue"],
+      //   //   "wangeditor": ["@wangeditor/editor-for-vue",'@wangeditor/editor'],
+      //   // }
+      // }
+    ]
     },
   },
 })

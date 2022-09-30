@@ -1,7 +1,7 @@
 /*
  * @Author: YangLiwei
  * @Date: 2022-06-29 17:21:34
- * @LastEditTime: 2022-09-28 15:19:01
+ * @LastEditTime: 2022-09-30 10:29:47
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\components\lookField.tsx
  * @Description:
@@ -9,9 +9,8 @@
 import { defineComponent, Prop } from "vue";
 import { message } from "ant-design-vue";
 import { CopyOutlined } from "@ant-design/icons-vue";
-import { ColumnsTypes } from "../types";
+import { ColumnsTypes, DefaultOptionType } from "../types";
 import { Copy, FindTextFromData } from "../utils";
-import { DefaultOptionType } from 'ant-design-vue/lib/select';
 export default defineComponent({
   name:"lookField",
   props: {
