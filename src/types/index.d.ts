@@ -1,7 +1,7 @@
 /*
  * @Author: yangliwei 1280426581@qq.com
  * @Date: 2022-09-26 14:25:58
- * @LastEditTime: 2022-10-08 10:15:22
+ * @LastEditTime: 2022-10-08 11:14:45
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\types\index.d.ts
  * Copyright (c) 2022 by yangliwei 1280426581@qq.com, All Rights Reserved. 
@@ -10,6 +10,28 @@
 import type { VNode } from "vue";
 import { ColumnType } from "ant-design-vue/lib/table";
 import { ComputedRef, Ref } from "vue";
+
+export interface Ajax<T> {
+  code: string;
+  data: T;
+  msg: string;
+}
+
+export interface PageAjax<T> {
+  code: string;
+  msg: string;
+  rows: Array<T>;
+  total: number;
+}
+
+export interface PageInterFace {
+  current?: number;
+  pageNumber?: number;
+  pageSize?: number;
+  total?: number;
+  size?: string;
+  [other: string]: any;
+}
 
 export type ColumnsTypes =
   | "text"

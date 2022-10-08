@@ -1,7 +1,7 @@
 /*
  * @Author: YangLiwei
  * @Date: 2022-08-02 10:34:12
- * @LastEditTime: 2022-10-08 10:30:58
+ * @LastEditTime: 2022-10-08 11:19:24
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\utils\page.ts
  * @Description:
@@ -25,7 +25,7 @@ export const tableChangeFunc = <T>(
   page: TablePaginationConfig,
   filters: Record<string, FilterValue | null>,
   sorter: SorterResult<T> | SorterResult<T>[],
-  callBackFunc: (data: unknown) => void
+  callBackFunc: (data: any) => void
 ) => {
   const obj: any = {
     ...page,
