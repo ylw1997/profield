@@ -31,11 +31,11 @@ const usePage = <T>({
 }: UsePage<T>) => {
   const rowskeys = ref<Key[]>([]);
   //初始化的参数
-  const paramsobj = { ...defaultPagination, ...params };
+  const paramsobj = { ...defaultPagination, ...params } as TablePaginationConfig;
   // 加载
   const tableLoading = ref<boolean>(false);
   // 分页
-  const pagination = ref(paramsobj);
+  const pagination = ref<TablePaginationConfig>(paramsobj);
   // 数据
   const tableData = ref<Array<T>>();
   // 获取方法
@@ -85,7 +85,6 @@ const usePage = <T>({
   const changeParamsCleanPage = (cleanParams = {}) => {
     const obj = {
       ...paramsobj,
-      pageNum: 1,
       current: 1,
       total: pagination.value.total,
       ...cleanParams,

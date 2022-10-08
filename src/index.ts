@@ -1,7 +1,7 @@
 /*
  * @Author: yangliwei 1280426581@qq.com
  * @Date: 2022-09-26 17:00:18
- * @LastEditTime: 2022-10-08 10:15:44
+ * @LastEditTime: 2022-10-08 13:14:22
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\index.ts
  * Copyright (c) 2022 by yangliwei 1280426581@qq.com, All Rights Reserved. 
@@ -17,9 +17,13 @@ import lookField from "./components/lookField";
 import { columnItem, ColumnsTypes, DefaultOptionType, RuleObject, RuleType } from "./types/index";
 import useForm from "./hooks/useForm";
 import useTable from "./hooks/useTable";
+import useAJAX from "./hooks/useAjax";
+import { useAJAXSim } from "./hooks/useAjax";
+import useModel from "./hooks/useModel";
+import usePage from "./hooks/usePage";
 
 //实现按需引入*
-export { proField, YUpload, proForm, proPanel, proTable, lookField, useForm, useTable };
+export { proField, YUpload, proForm, proPanel, proTable, lookField, useForm, useTable,useAJAX,useAJAXSim,useModel,usePage };
 
 export type { ColumnsTypes, columnItem, DefaultOptionType, RuleObject, RuleType };
 

@@ -1,7 +1,7 @@
 /*
  * @Author: YangLiwei
  * @Date: 2022-08-02 10:34:12
- * @LastEditTime: 2022-10-08 11:19:24
+ * @LastEditTime: 2022-10-08 13:33:39
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\utils\page.ts
  * @Description:
@@ -10,12 +10,11 @@
 import { TablePaginationConfig } from "ant-design-vue";
 import { FilterValue, SorterResult } from "ant-design-vue/es/table/interface";
 
-export const defaultPagination = {
+export const defaultPagination:TablePaginationConfig = {
   showSizeChanger: true,
   showQuickJumper: true,
   pageSizeOptions: ["10", "20", "30", "40", "50"],
   current: 1, //初始页
-  pageNum: 1,
   pageSize: 10, //分页大小
   showTotal: (total: number) => `一共有 ${total} 条数据`,
 };
