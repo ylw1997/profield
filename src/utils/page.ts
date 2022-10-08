@@ -1,16 +1,16 @@
 /*
  * @Author: YangLiwei
  * @Date: 2022-08-02 10:34:12
- * @LastEditTime: 2022-08-02 10:42:44
- * @LastEditors: YangLiwei
- * @FilePath: \vite-admin\src\utils\page.ts
+ * @LastEditTime: 2022-10-08 10:30:58
+ * @LastEditors: yangliwei 1280426581@qq.com
+ * @FilePath: \vite-npm\src\utils\page.ts
  * @Description:
  */
 
 import { TablePaginationConfig } from "ant-design-vue";
 import { FilterValue, SorterResult } from "ant-design-vue/es/table/interface";
 
-export const defaultPagination: any = {
+export const defaultPagination = {
   showSizeChanger: true,
   showQuickJumper: true,
   pageSizeOptions: ["10", "20", "30", "40", "50"],
@@ -25,7 +25,7 @@ export const tableChangeFunc = <T>(
   page: TablePaginationConfig,
   filters: Record<string, FilterValue | null>,
   sorter: SorterResult<T> | SorterResult<T>[],
-  callBackFunc: (data: any) => void
+  callBackFunc: (data: unknown) => void
 ) => {
   const obj: any = {
     ...page,

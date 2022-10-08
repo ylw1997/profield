@@ -1,6 +1,6 @@
 {
   "name": "profield",
-  "version": "1.25.0",
+  "version": "1.26.0",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -32,7 +32,11 @@
     "vue": "^3.2.40"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.39.0",
+    "@typescript-eslint/parser": "^5.39.0",
     "@vitejs/plugin-vue": "^3.1.2",
+    "eslint": "^8.25.0",
+    "eslint-plugin-vue": "^9.6.0",
     "typescript": "^4.8.4",
     "vite": "^3.1.6",
     "vue-tsc": "^1.0.0"

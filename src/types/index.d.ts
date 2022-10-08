@@ -1,13 +1,13 @@
 /*
  * @Author: yangliwei 1280426581@qq.com
  * @Date: 2022-09-26 14:25:58
- * @LastEditTime: 2022-09-29 17:20:26
+ * @LastEditTime: 2022-10-08 10:15:22
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\types\index.d.ts
  * Copyright (c) 2022 by yangliwei 1280426581@qq.com, All Rights Reserved. 
  * @Description: 
  */
-import type { VNode } from 'vue';
+import type { VNode } from "vue";
 import { ColumnType } from "ant-design-vue/lib/table";
 import { ComputedRef, Ref } from "vue";
 
@@ -37,7 +37,7 @@ export interface BaseOptionType {
 export interface DefaultOptionType extends BaseOptionType {
   label?: any;
   value?: string | number | null;
-  children?: Omit<DefaultOptionType, 'children'>[];
+  children?: Omit<DefaultOptionType, "children">[];
 }
 
 declare type VNodeChildAtom = VNode | string | number | boolean | null | undefined | void;
@@ -48,7 +48,7 @@ export declare type StoreValue = any;
 
 declare type Validator = (rule: RuleObject, value: StoreValue, callback: (error?: string) => void) => Promise<void> | void;
 
-export declare type RuleType = 'string' | 'number' | 'boolean' | 'method' | 'regexp' | 'integer' | 'float' | 'object' | 'enum' | 'date' | 'url' | 'hex' | 'email';
+export declare type RuleType = "string" | "number" | "boolean" | "method" | "regexp" | "integer" | "float" | "object" | "enum" | "date" | "url" | "hex" | "email";
 
 export type ValidateType  = RuleType | "any";
 
@@ -83,11 +83,11 @@ interface BaseRule {
   /** Customize rule level `validateTrigger`. Must be subset of Field `validateTrigger` */
   validateTrigger?: string | string[];
   /** Check trigger timing */
-  trigger?: 'blur' | 'change' | Array<'change' | 'blur'>;
+  trigger?: "blur" | "change" | Array<"change" | "blur">;
 }
 declare type AggregationRule = BaseRule & Partial<ValidatorRule>;
-interface ArrayRule extends Omit<AggregationRule, 'type'> {
-  type: 'array';
+interface ArrayRule extends Omit<AggregationRule, "type"> {
+  type: "array";
   defaultField?: RuleObject;
 }
 

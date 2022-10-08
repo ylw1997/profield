@@ -26,7 +26,7 @@ export default defineComponent({
     onCancel: {
       type: Function,
       default: () => null,
-    } as Prop<(any: any) => void>,
+    } as Prop<(any: MouseEvent) => void>,
     onOk: {
       type: Function,
       default: () => null,

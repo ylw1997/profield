@@ -1,7 +1,7 @@
 /*
  * @Author: YangLiwei
  * @Date: 2022-06-27 10:13:31
- * @LastEditTime: 2022-09-29 13:57:12
+ * @LastEditTime: 2022-10-08 10:27:23
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\components\proTable.tsx
  * @Description: 表格封装
@@ -29,7 +29,8 @@ import { SizeType } from "ant-design-vue/es/config-provider";
 import { MenuClickEventHandler } from "ant-design-vue/lib/menu/src/interface";
 import useTable from "../hooks/useTable";
 import { columnItem } from "../types";
-import { TableColumns } from '../utils/index';
+import { TableColumns } from "../utils/index";
+import { DefaultRecordType } from "ant-design-vue/es/vc-table/interface";
 export default defineComponent({
   name:"proTable",
   components: {
@@ -58,7 +59,7 @@ export default defineComponent({
     columns: {
       type: Array,
       default: () => [],
-    } as columnItem[] | any,
+    } as Prop<columnItem[]>,
     rowKey: {
       type: String,
       default: "id",
@@ -77,10 +78,10 @@ export default defineComponent({
     },
     customRow: {
       type: Function,
-    } as Prop<GetComponentProps<any> | undefined>,
+    } as Prop<GetComponentProps<DefaultRecordType> | undefined>,
     rowClassName: {
       type: Function,
-    } as Prop<any>,
+    } as Prop<(record:unknown,index:number)=>string>,
     customSize: {
       type: String,
       default: () => "middle",
@@ -99,7 +100,7 @@ export default defineComponent({
     "reset",
   ],
   setup(props, { slots, emit, attrs }) {
-    const sourceColumns = ref<columnItem[]>(TableColumns(props.columns));
+    const sourceColumns = ref<columnItem[]>(TableColumns(props.columns!));
     const { onSelectChange, handleTableChange, SelectedRowKeys } =
       useTable(emit);
     const showSerach = ref(true);
@@ -211,15 +212,15 @@ export default defineComponent({
             {...props}
             {...attrs}
             size={TableSize.value}
-            columns={TableColumns(props.columns)}
+            columns={TableColumns(props.columns!)}
             onChange={handleTableChange}
             row-selection={
               props.rowskeys
                 ? {
-                    selectedRowKeys: props.rowskeys,
-                    onChange: (selectedRowKeys: Array<number | string>) =>
-                      onSelectChange(selectedRowKeys, props.pagination),
-                  }
+                  selectedRowKeys: props.rowskeys,
+                  onChange: (selectedRowKeys: Array<number | string>) =>
+                    onSelectChange(selectedRowKeys, props.pagination),
+                }
                 : null
             }
             v-slots={{

@@ -1,9 +1,9 @@
 /*
  * @Author: YangLiwei
  * @Date: 2021-01-19 18:31:56
- * @LastEditTime: 2022-09-28 13:49:14
+ * @LastEditTime: 2022-10-08 10:14:19
  * @LastEditors: yangliwei 1280426581@qq.com
- * @FilePath: \vite-npm\src\hooks\userTable.ts
+ * @FilePath: \vite-npm\src\hooks\useTable.ts
  * @Description:table hook
  */
 import { TablePaginationConfig } from "ant-design-vue";
@@ -61,19 +61,19 @@ const useTable = (emit: any) => {
       emit("update:pagination", obj)
     );
   };
-  //编辑
+    //编辑
   const edit = (record: any) => {
     emit("edit", record);
   };
-  //删除
+    //删除
   const del = (record: any) => {
     emit("del", record);
   };
-  //查看
+    //查看
   const look = (record: any) => {
     emit("look", record);
   };
-  //点击行
+    //点击行
   const customRow = (record: any) => {
     return {
       onClick: (e: { path: Element[] }) => {

@@ -1,10 +1,10 @@
-import { RuleType } from 'ant-design-vue/lib/form/interface';
-import { DefaultOptionType } from 'ant-design-vue/lib/select';
-import { columnItem } from '../types/index';
+import { RuleType } from "ant-design-vue/lib/form/interface";
+import { DefaultOptionType } from "ant-design-vue/lib/select";
+import { columnItem } from "../types/index";
 /*
  * @Author: yangliwei 1280426581@qq.com
  * @Date: 2022-09-27 13:55:41
- * @LastEditTime: 2022-09-29 10:15:34
+ * @LastEditTime: 2022-10-08 10:15:30
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\utils\index.ts
  * Copyright (c) 2022 by yangliwei 1280426581@qq.com, All Rights Reserved. 
@@ -24,7 +24,7 @@ export const guid = (): string => {
  * @param type columnsType
  * @returns validateType
  */
- export const ValidateItemType = (
+export const ValidateItemType = (
   columnItem: columnItem
 ): "array" | RuleType | undefined | any => {
   // if (!columnItem.required) return undefined;
@@ -62,7 +62,7 @@ export const guid = (): string => {
  * @param text 找的值
  * @returns 字符串
  */
- export const FindTextFromData = (
+export const FindTextFromData = (
   DataArr: DefaultOptionType[] | undefined,
   text: string | number
 ): string => {
@@ -80,7 +80,7 @@ export const guid = (): string => {
  * @param {string} text - 要复制到剪贴板的文本。
  * @returns 复制文本时解决的承诺。
  */
- export const Copy = (text: string) => {
+export const Copy = (text: string) => {
   return navigator.clipboard.writeText(text);
 };
 
