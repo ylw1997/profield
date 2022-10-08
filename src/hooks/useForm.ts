@@ -1,7 +1,7 @@
 /*
  * @Author: YangLiwei
  * @Date: 2021-01-14 18:07:03
- * @LastEditTime: 2022-09-29 17:01:46
+ * @LastEditTime: 2022-10-08 09:57:23
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\hooks\useForm.ts
  * @Description:formhook
@@ -29,9 +29,6 @@ const useForm = (emit?: any, props?: any, columns?: columnItem[]) => {
   };
   //重置
   const reset = () => {
-    // Object.keys(formModel.value).map(
-    //   (item) => (formModel.value[item] = undefined)
-    // );
     formModel.value = {};
     if (emit) emit("reset", {});
   };
