@@ -1,17 +1,17 @@
 /*
  * @Author: yangliwei 1280426581@qq.com
  * @Date: 2022-09-26 14:10:44
- * @LastEditTime: 2022-09-30 15:13:19
+ * @LastEditTime: 2022-10-08 15:08:24
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\vite.config.ts
  * Copyright (c) 2022 by yangliwei 1280426581@qq.com, All Rights Reserved. 
  * @Description: 
  */
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
+import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue";
 import path from "path";
 import vueJsx from "@vitejs/plugin-vue-jsx";
-import dts from 'vite-plugin-dts'
+import dts from "vite-plugin-dts";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue(), vueJsx(), dts({
@@ -26,23 +26,23 @@ export default defineConfig({
   },
   build: {
     lib: {
-      entry: path.resolve(__dirname, 'src/index.ts'),
-      formats: ['es'],
-      name: 'index',
+      entry: path.resolve(__dirname, "src/index.ts"),
+      formats: ["es"],
+      name: "index",
       fileName: (format) => `index.${format}.js`,
     },
     rollupOptions: {
-      external: ['vue','ant-design-vue'],
+      external: ["vue","ant-design-vue"],
       input: ["src/index.ts"],
       output: [{
         format: "es",
-        entryFileNames: '[name].js',
-        dir: 'dist',
-        manualChunks(id){
-          if(id.includes('node_modules')){
-            return 'vendor'
-          }
-        }
+        entryFileNames: "[name].js",
+        dir: "dist",
+        // manualChunks(id){
+        //   if(id.includes("node_modules")){
+        //     return "vendor";
+        //   }
+        // }
         // preserveModules: true,
         // preserveModulesRoot: 'src',
         // manualChunks:{
@@ -51,7 +51,7 @@ export default defineConfig({
         //   "wangeditor": ["@wangeditor/editor-for-vue",'@wangeditor/editor'],
         // }
       }
-    ]
+      ]
     },
   },
-})
+});
