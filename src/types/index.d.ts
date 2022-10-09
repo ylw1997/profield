@@ -1,7 +1,7 @@
 /*
  * @Author: yangliwei 1280426581@qq.com
  * @Date: 2022-09-26 14:25:58
- * @LastEditTime: 2022-10-08 11:14:45
+ * @LastEditTime: 2022-10-09 11:24:51
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\types\index.d.ts
  * Copyright (c) 2022 by yangliwei 1280426581@qq.com, All Rights Reserved. 
@@ -116,9 +116,8 @@ interface ArrayRule extends Omit<AggregationRule, "type"> {
 export declare type RuleObject = AggregationRule | ArrayRule;
 
 export interface columnItem extends ColumnType {
-  title: string;
-  dataIndex: string;
-  options?: DefaultOptionType[] | ComputedRef<DefaultOptionType[]> | Ref<DefaultOptionType[]> | undefined | Ref<DefaultOptionType[] | undefined>; //下拉选择框
+  title: string; // 列名
+  dataIndex: string; // 字段名
   notShowInSearch?: boolean; //是否展示在查询表单
   notShowInAddOrEdit?: boolean; //不在添加或编辑的时候展示
   notShowInTable?: boolean; //不在表格显示
@@ -130,6 +129,7 @@ export interface columnItem extends ColumnType {
   rules?: RuleObject; //表单验证规则
   span?: number; //占据的列数
   condition?: (formModel: any) => boolean; //满足条件才显示
+  options?: DefaultOptionType[]; //下拉选择框
   rangeDateKeyArray?: [string, string]; //时间范围的key
   cascaderKeyArray?: string[]; //级联选择后的对应字段
   slot?: string; //插槽名称

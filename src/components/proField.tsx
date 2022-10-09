@@ -1,7 +1,7 @@
 /*
  * @Author: YangLiwei
  * @Date: 2021-05-16 14:56:37
- * @LastEditTime: 2022-10-08 10:19:59
+ * @LastEditTime: 2022-10-09 11:00:57
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\components\proField.tsx
  * @Description:原子组件
@@ -35,18 +35,6 @@ const ProField = defineComponent({
     title: {
       type: String,
       default: () => "",
-    },
-    dataIndex: {
-      type: String,
-      default: () => "",
-    },
-    uploadList: {
-      type: Array,
-      default: () => [],
-    },
-    loading: {
-      type: Boolean,
-      default: () => false,
     },
   },
   setup(prop) {

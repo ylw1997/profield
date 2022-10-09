@@ -1,7 +1,7 @@
 /*
  * @Author: YangLiwei
  * @Date: 2022-06-29 17:21:34
- * @LastEditTime: 2022-10-08 10:14:26
+ * @LastEditTime: 2022-10-09 13:39:20
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\components\lookField.tsx
  * @Description:
@@ -18,8 +18,9 @@ export default defineComponent({
       type: String,
       default: () => "text",
     } as Prop<ColumnsTypes>,
-    selectOptions: {
+    options: {
       type: Array,
+      required:false,
       default: () => [],
     } as Prop<DefaultOptionType[]>,
     value: {
@@ -39,7 +40,7 @@ export default defineComponent({
     };
     return () => {
       if (prop.type === "select") {
-        return <span>{FindTextFromData(prop.selectOptions, prop.value)}</span>;
+        return <span>{FindTextFromData(prop.options, prop.value)}</span>;
       } else {
         return (
           <span style={{ wordBreak: "break-all" }}>
