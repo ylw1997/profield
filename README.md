@@ -1,8 +1,6 @@
 # proField 库
 
-<div style="display: flex;justify-content: center;" >
-<img src="https://article.biliimg.com/bfs/article/b2fca8e0d573c6c4b23f8dbefc656b3bb845a6f8.png" width="200">
-</div>
+<img src="https://article.biliimg.com/bfs/article/b2fca8e0d573c6c4b23f8dbefc656b3bb845a6f8.png" width="200" style="display: block;margin: 0 auto;">
 
 - github: [vite-npm](https://github.com/ylw1997/vite-npm)
 
