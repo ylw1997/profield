@@ -23,7 +23,7 @@ export default defineComponent({
       type: Array,
       required: false,
       default: () => [],
-    } as Prop<DefaultOptionType[]>,
+    } as Prop<DefaultOptionType[]|any >,
     value: {
       type: [String, Number],
       default: () => "",

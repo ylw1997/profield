@@ -129,7 +129,7 @@ export interface columnItem extends ColumnType {
   rules?: RuleObject; //表单验证规则
   span?: number; //占据的列数
   condition?: (formModel: any) => boolean; //满足条件才显示
-  options?: DefaultOptionType[] | any; //下拉选择框
+  options?: DefaultOptionType[] | ComputedRef<DefaultOptionType[]> | Ref<DefaultOptionType[]> | undefined | Ref<DefaultOptionType[] | undefined>; //下拉选择框
   rangeDateKeyArray?: [string, string]; //时间范围的key
   cascaderKeyArray?: string[]; //级联选择后的对应字段
   slot?: string; //插槽名称
