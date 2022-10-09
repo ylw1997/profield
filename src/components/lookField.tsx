@@ -1,7 +1,7 @@
 /*
  * @Author: YangLiwei
  * @Date: 2022-06-29 17:21:34
- * @LastEditTime: 2022-10-09 13:39:20
+ * @LastEditTime: 2022-10-09 14:55:34
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\components\lookField.tsx
  * @Description:
@@ -11,8 +11,9 @@ import { message } from "ant-design-vue";
 import { CopyOutlined } from "@ant-design/icons-vue";
 import { ColumnsTypes, DefaultOptionType } from "../types";
 import { Copy, FindTextFromData } from "../utils";
+import timeFormat from "../utils/time";
 export default defineComponent({
-  name:"lookField",
+  name: "lookField",
   props: {
     type: {
       type: String,
@@ -20,7 +21,7 @@ export default defineComponent({
     } as Prop<ColumnsTypes>,
     options: {
       type: Array,
-      required:false,
+      required: false,
       default: () => [],
     } as Prop<DefaultOptionType[]>,
     value: {
@@ -38,20 +39,31 @@ export default defineComponent({
           message.error("复制失败");
         });
     };
+
+    // 复制
+    const copyEle = <CopyOutlined
+      v-show={prop.value}
+      class="text-color cursor-pointer ml-2"
+      onClick={() => copy(prop.value)}
+    />;
+
     return () => {
-      if (prop.type === "select") {
-        return <span>{FindTextFromData(prop.options, prop.value)}</span>;
-      } else {
-        return (
-          <span style={{ wordBreak: "break-all" }}>
-            {prop.value}
-            <CopyOutlined
-              v-show={prop.value}
-              class="text-color cursor-pointer ml-2"
-              onClick={() => copy(prop.value)}
-            />
-          </span>
-        );
+      switch (prop.type) {
+      case "date":
+        return <span>{timeFormat(prop.value, "YYYY-MM-DD")} {copyEle} </span>;
+      case "dateTime":
+        return<span>{timeFormat(prop.value, "YYYY-MM-DD HH:mm:ss")} {copyEle}</span>;
+      case "money":
+        return<span>￥{prop.value} {copyEle}</span>;
+      case "select":
+        return<span>{FindTextFromData(prop.options, prop.value)} {copyEle}</span>;
+      case "upload":
+        return<img src={prop.value+""} class="table-img" />;
+      default:
+        return <span style={{ wordBreak: "break-all" }}>
+          {prop.value}
+          {copyEle}
+        </span>;
       }
     };
   },
