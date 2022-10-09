@@ -1,7 +1,7 @@
 /*
  * @Author: YangLiwei
  * @Date: 2022-06-29 17:21:34
- * @LastEditTime: 2022-10-09 15:16:00
+ * @LastEditTime: 2022-10-09 15:52:17
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\components\lookField.tsx
  * @Description:
@@ -39,15 +39,14 @@ export default defineComponent({
           message.error("复制失败");
         });
     };
-
-    // 复制
-    const copyEle = <CopyOutlined
-      v-show={prop.value}
-      class="text-color cursor-pointer ml-2"
-      onClick={() => copy(prop.value)}
-    />;
-
     return () => {
+
+      const copyEle = <CopyOutlined
+        v-show={prop.value}
+        class="text-color cursor-pointer ml-2"
+        onClick={() => copy(prop.value)}
+      />;
+
       switch (prop.type) {
       case "date":
         return <span>{timeFormat(prop.value, "YYYY-MM-DD")} {copyEle} </span>;
@@ -56,7 +55,7 @@ export default defineComponent({
       case "money":
         return<span>￥{prop.value} {copyEle}</span>;
       case "select":
-        return<span>{FindTextFromData(prop.options, prop.value)} {copyEle}</span>;
+        return <span>{FindTextFromData(prop.options, prop.value)} {copyEle}</span>;
       case "upload":
         return<img src={prop.value+""} class="table-img" />;
       default:
