@@ -1,7 +1,7 @@
 /*
  * @Author: yangliwei 1280426581@qq.com
  * @Date: 2022-09-26 14:25:58
- * @LastEditTime: 2022-10-09 15:16:52
+ * @LastEditTime: 2022-10-09 15:25:29
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\types\index.d.ts
  * Copyright (c) 2022 by yangliwei 1280426581@qq.com, All Rights Reserved. 
@@ -129,7 +129,7 @@ export interface columnItem extends ColumnType {
   rules?: RuleObject; //表单验证规则
   span?: number; //占据的列数
   condition?: (formModel: any) => boolean; //满足条件才显示
-  options?: DefaultOptionType[] | any[]; //下拉选择框
+  options?: DefaultOptionType[] | any; //下拉选择框
   rangeDateKeyArray?: [string, string]; //时间范围的key
   cascaderKeyArray?: string[]; //级联选择后的对应字段
   slot?: string; //插槽名称

@@ -1,7 +1,7 @@
 /*
  * @Author: yangliwei 1280426581@qq.com
  * @Date: 2022-09-26 17:00:18
- * @LastEditTime: 2022-10-09 09:49:17
+ * @LastEditTime: 2022-10-09 15:24:47
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\index.ts
  * Copyright (c) 2022 by yangliwei 1280426581@qq.com, All Rights Reserved. 
@@ -21,9 +21,10 @@ import { useAJAXSim } from "./hooks/useAjax";
 import useModel from "./hooks/useModel";
 import usePage from "./hooks/usePage";
 import timeFormat from "./utils/time";
+import useForm from "./hooks/useForm";
 
 //实现按需引入*
-export { proField, YUpload, proForm, proPanel, proTable, lookField, useTable,useAJAX,useAJAXSim,useModel,usePage,timeFormat };
+export { proField, YUpload, proForm, proPanel, proTable, lookField, useTable,useAJAX,useAJAXSim,useModel,usePage,timeFormat,useForm };
 
 export type { ColumnsTypes, columnItem, DefaultOptionType, RuleObject, RuleType };
 
