@@ -1,7 +1,7 @@
 /*
  * @Author: yangliwei 1280426581@qq.com
  * @Date: 2022-09-26 14:10:44
- * @LastEditTime: 2022-10-10 15:18:28
+ * @LastEditTime: 2022-10-10 15:42:20
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\vite.config.ts
  * Copyright (c) 2022 by yangliwei 1280426581@qq.com, All Rights Reserved. 
@@ -32,7 +32,7 @@ export default defineConfig({
       fileName: (format) => `index.${format}.js`,
     },
     rollupOptions: {
-      external: ["vue","ant-design-vue","dayjs"],
+      external: ["vue","ant-design-vue"],
       input: ["src/index.ts"],
       output: [{
         format: "es",
@@ -43,8 +43,8 @@ export default defineConfig({
         //     return "vendor";
         //   }
         // }
-        preserveModules: true,
-        preserveModulesRoot: "src",
+        // preserveModules: true,
+        // preserveModulesRoot: "src",
         // manualChunks:{
         //   // "ant-design-vue": ["ant-design-vue"],
         //   "ant-design-icon": ["@ant-design/icons-vue"],
