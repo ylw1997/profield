@@ -1,7 +1,7 @@
 /*
  * @Author: YangLiwei
  * @Date: 2022-07-11 10:36:59
- * @LastEditTime: 2022-09-27 14:00:53
+ * @LastEditTime: 2022-10-10 15:12:47
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\utils\form.ts
  * @Description: 表单数据处理
@@ -11,6 +11,12 @@ import { UploadFile } from "ant-design-vue";
 import dayjs from "dayjs";
 import { columnItem } from "../types";
 import timeFormat from "./time";
+import weekday from "dayjs/plugin/weekday";
+import localeData from "dayjs/plugin/localeData";
+import "dayjs/locale/zh-cn";
+dayjs.extend(weekday);
+dayjs.extend(localeData);
+dayjs.locale("zh-cn");
 
 export interface ModelType {
   ylwType: "add" | "edit" | "look";
