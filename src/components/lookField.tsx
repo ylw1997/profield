@@ -1,7 +1,7 @@
 /*
  * @Author: YangLiwei
  * @Date: 2022-06-29 17:21:34
- * @LastEditTime: 2022-10-09 15:59:25
+ * @LastEditTime: 2022-10-18 13:39:17
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\components\lookField.tsx
  * @Description:
@@ -42,7 +42,10 @@ export default defineComponent({
     return () => {
       const copyEle = ()=>(<CopyOutlined
         v-show={prop.value}
-        class="text-color cursor-pointer ml-2"
+        style={{
+          cursor: "pointer",
+          marginLeft: "5px",
+        }}
         onClick={() => copy(prop.value)}
       />);
       switch (prop.type) {
@@ -55,7 +58,12 @@ export default defineComponent({
       case "select":
         return <span>{FindTextFromData(prop.options, prop.value)} {copyEle()}</span>;
       case "upload":
-        return<img src={prop.value+""} class="table-img" />;
+        return<img src={prop.value+""} style={{
+          width: "80px",
+          height: "80px",
+          borderRadius: "2px",
+          display: "inline-block",
+        }} />;
       default:
         return <span style={{ wordBreak: "break-all" }}>
           {prop.value}

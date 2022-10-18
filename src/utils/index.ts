@@ -4,7 +4,7 @@ import { columnItem } from "../types/index";
 /*
  * @Author: yangliwei 1280426581@qq.com
  * @Date: 2022-09-27 13:55:41
- * @LastEditTime: 2022-10-08 10:15:30
+ * @LastEditTime: 2022-10-18 13:59:29
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\utils\index.ts
  * Copyright (c) 2022 by yangliwei 1280426581@qq.com, All Rights Reserved. 
@@ -84,6 +84,22 @@ export const Copy = (text: string) => {
   return navigator.clipboard.writeText(text);
 };
 
-export const TableColumns = (columns: columnItem[]): any[] => {
-  return columns.filter((item) => !item.notShowInTable);
+// 筛选出需要在列选项中显示的列
+export const TableColumns = (columns?: columnItem[]): columnItem[] => {
+  if (columns) {
+    return columns.filter((item) => !item.notShowInTable);
+  }
+  return [];
+};
+
+// 筛选出需要在表格显示的列
+export const TableColumnSelected = (columns?: any[],selectedKeys?: string[], ) => {
+  if (columns&&columns.length>0) {
+    if(selectedKeys&&selectedKeys.length>0){
+      return columns.filter((item) => selectedKeys.includes(item.dataIndex));
+    }else{
+      return TableColumns(columns);
+    }
+  }
+  return [];
 };

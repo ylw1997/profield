@@ -1,7 +1,7 @@
 /*
  * @Author: YangLiwei
  * @Date: 2022-07-11 14:13:54
- * @LastEditTime: 2022-09-28 15:00:21
+ * @LastEditTime: 2022-10-18 13:43:26
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\components\proPanel.tsx
  * @Description:
@@ -66,7 +66,7 @@ export default defineComponent({
               default: slots.default,
               footer: () => (
                 <>
-                  <Button class="mr-2" onClick={props.onCancel}>
+                  <Button style={{marginRight:"10px"}} onClick={props.onCancel}>
                     取消
                   </Button>
                   <Button

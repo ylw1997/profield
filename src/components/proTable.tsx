@@ -1,14 +1,13 @@
 /*
  * @Author: YangLiwei
  * @Date: 2022-06-27 10:13:31
- * @LastEditTime: 2022-10-08 10:27:23
+ * @LastEditTime: 2022-10-18 14:21:24
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\components\proTable.tsx
  * @Description: 表格封装
  */
 import { defineComponent, ref, Prop } from "vue";
 import tableAction from "./tableAction";
-import SelectColumns from "./selectColumns";
 import SearchForm from "./searchForm.vue";
 import {
   Alert,
@@ -29,10 +28,11 @@ import { SizeType } from "ant-design-vue/es/config-provider";
 import { MenuClickEventHandler } from "ant-design-vue/lib/menu/src/interface";
 import useTable from "../hooks/useTable";
 import { columnItem } from "../types";
-import { TableColumns } from "../utils/index";
+import { TableColumns, TableColumnSelected } from "../utils/index";
 import { DefaultRecordType } from "ant-design-vue/es/vc-table/interface";
+import ColumnPicker from "./ColumnPicker";
 export default defineComponent({
-  name:"proTable",
+  name: "proTable",
   components: {
     tableAction,
   },
@@ -81,7 +81,7 @@ export default defineComponent({
     } as Prop<GetComponentProps<DefaultRecordType> | undefined>,
     rowClassName: {
       type: Function,
-    } as Prop<(record:unknown,index:number)=>string>,
+    } as Prop<(record: unknown, index: number) => string>,
     customSize: {
       type: String,
       default: () => "middle",
@@ -90,17 +90,22 @@ export default defineComponent({
       type: Boolean,
       default: () => false,
     },
+    defaultColumnSelected: {
+      type: Array,
+      default: () => [],
+    } as Prop<string[]>,
   },
   emits: [
     "update:rowskeys",
     "update:pagination",
     "update:columns",
+    "update:defaultColumnSelected",
     "formDataChange",
     "search",
     "reset",
   ],
   setup(props, { slots, emit, attrs }) {
-    const sourceColumns = ref<columnItem[]>(TableColumns(props.columns!));
+    const sourceColumns = ref<columnItem[]>(TableColumns(props.columns));
     const { onSelectChange, handleTableChange, SelectedRowKeys } =
       useTable(emit);
     const showSerach = ref(true);
@@ -110,6 +115,11 @@ export default defineComponent({
     const SelectSize: MenuClickEventHandler = (size) => {
       TableSize.value = size.key as SizeType;
     };
+    // 选择表格字段
+    const ColumnPickerChange = ({columns,targetKeys}: {columns:columnItem[];targetKeys:string[]}) => {
+      emit("update:columns", columns);
+      emit("update:defaultColumnSelected", targetKeys);
+    };
     return () => (
       <div>
         {/* 搜索栏 */}
@@ -117,7 +127,9 @@ export default defineComponent({
           <SearchForm
             loading={props.loading}
             v-show={showSerach.value}
-            class="mt-2 mb-2"
+            style={{
+              margin:"5px 0"
+            }}
             column={props.columns}
             onSearch={(val: object) => emit("search", val)}
             onReset={(val: string) => emit("reset", val)}
@@ -192,12 +204,10 @@ export default defineComponent({
                     </Dropdown>
                   </Tooltip>
                   <Tooltip title="字段">
-                    <SelectColumns
-                      class="link-color"
-                      rowKey={props.rowKey}
-                      columns={sourceColumns.value}
-                      onChange={(val: any) => emit("update:columns", val)}
-                    />
+                    <ColumnPicker
+                      defaultSelected={props.defaultColumnSelected}
+                      columns={sourceColumns.value} 
+                      onChange={ColumnPickerChange} />
                   </Tooltip>
                 </Space>
               ),
@@ -208,11 +218,10 @@ export default defineComponent({
         {/* 表格 */}
         {props.showTable && (
           <Table
-            class="mt-3"
             {...props}
             {...attrs}
             size={TableSize.value}
-            columns={TableColumns(props.columns!)}
+            columns={TableColumnSelected(props.columns,props.defaultColumnSelected)}
             onChange={handleTableChange}
             row-selection={
               props.rowskeys
