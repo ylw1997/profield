@@ -1,17 +1,17 @@
 /*
  * @Author: yangliwei 1280426581@qq.com
  * @Date: 2022-10-18 10:32:43
- * @LastEditTime: 2022-10-19 10:39:44
+ * @LastEditTime: 2022-10-19 18:46:13
  * @LastEditors: yangliwei 1280426581@qq.com
- * @FilePath: \vite-npm\src\components\ColumnPicker.tsx
+ * @FilePath: \profield\src\components\ColumnPicker.tsx
  * Copyright (c) 2022 by yangliwei 1280426581@qq.com, All Rights Reserved. 
  * @Description: 
  */
-import { Popover } from "ant-design-vue";
-import { defineComponent, Prop, ref, computed } from 'vue';
+import { Popover, Space } from "ant-design-vue";
+import { defineComponent, Prop, ref, computed, watchEffect } from 'vue';
 import { columnItem } from "../types";
 import { FunnelPlotOutlined } from "@ant-design/icons-vue"
-import { Transfer } from "ant-design-vue"
+import { Transfer, Button } from "ant-design-vue"
 import { TransferItem } from "ant-design-vue/lib/transfer";
 
 
@@ -47,10 +47,29 @@ export default defineComponent({
         const columns = targetKeys.map((item) => {
           return props.columns!.find((column) => column.dataIndex === item)
         }).filter((item) => item != undefined);
-        emit("change", {columns,targetKeys});
+        emit("change", { columns, targetKeys });
       }
     }
 
+    // 当前选中上移下移
+    const move = (key: string, direction: "up" | "down", e: Event) => {
+      e.stopPropagation();
+      if (targetKeys.value && targetKeys.value.length > 1) {
+        const index = targetKeys.value.findIndex((item) => item === key);
+        if (direction === "up") {
+          if (index > 0) {
+            targetKeys.value.splice(index, 1);
+            targetKeys.value.splice(index - 1, 0, key);
+          }
+        } else {
+          if (index < targetKeys.value.length - 1) {
+            targetKeys.value.splice(index, 1);
+            targetKeys.value.splice(index + 1, 0, key);
+          }
+        }
+        change(targetKeys.value);
+      }
+    }
     return () => {
       return (
         <Popover
@@ -71,7 +90,26 @@ export default defineComponent({
             content: () => (
               <Transfer
                 dataSource={transferData.value}
-                render={item => item.title}
+                render={item => (
+                  <div style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    width: targetKeys.value && targetKeys.value.length >= 6? "182px": "200px"
+                  }}>
+                    <span style={{ whiteSpace: "normal" }}>{item.title}</span>
+                    {targetKeys.value && targetKeys.value.length > 1 && item.key && targetKeys.value.find(a => a === item.key) ? <Space>
+                      {
+                        targetKeys.value.findIndex((a) => a === item.key!) > 0 ?
+                          <Button onClick={(event) => move(item.key!, "up", event)} type="primary" size="small" >上移</Button> : null
+                      }
+                      {
+                        targetKeys.value.findIndex((a) => a === item.key!) < targetKeys.value.length - 1 ?
+                          <Button onClick={(event) => move(item.key!, "down", event)} type="primary" size="small" >下移</Button> : null
+                      }
+                    </Space> : null}
+                  </div>
+                )}
                 showSearch
                 v-model:targetKeys={targetKeys.value}
                 v-model:selectedKeys={selectKeys.value}
