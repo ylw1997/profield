@@ -1,7 +1,7 @@
 /*
  * @Author: yangliwei 1280426581@qq.com
  * @Date: 2022-10-18 10:32:43
- * @LastEditTime: 2022-10-18 14:07:54
+ * @LastEditTime: 2022-10-19 10:39:44
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\components\ColumnPicker.tsx
  * Copyright (c) 2022 by yangliwei 1280426581@qq.com, All Rights Reserved. 
@@ -46,7 +46,7 @@ export default defineComponent({
       if (props.columns) {
         const columns = targetKeys.map((item) => {
           return props.columns!.find((column) => column.dataIndex === item)
-        })
+        }).filter((item) => item != undefined);
         emit("change", {columns,targetKeys});
       }
     }
@@ -65,6 +65,7 @@ export default defineComponent({
                 alignItems: "center",
               }}>
                 <span>选择表格字段</span>
+                {slots.titleRight ? slots.titleRight(targetKeys) : null}
               </div>
             ),
             content: () => (

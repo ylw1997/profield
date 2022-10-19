@@ -1,12 +1,12 @@
 /*
  * @Author: YangLiwei
  * @Date: 2022-06-27 10:13:31
- * @LastEditTime: 2022-10-18 14:21:24
+ * @LastEditTime: 2022-10-18 17:52:04
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\components\proTable.tsx
  * @Description: 表格封装
  */
-import { defineComponent, ref, Prop } from "vue";
+import { defineComponent, ref, Prop, computed } from "vue";
 import tableAction from "./tableAction";
 import SearchForm from "./searchForm.vue";
 import {
@@ -116,10 +116,18 @@ export default defineComponent({
       TableSize.value = size.key as SizeType;
     };
     // 选择表格字段
-    const ColumnPickerChange = ({columns,targetKeys}: {columns:columnItem[];targetKeys:string[]}) => {
+    const ColumnPickerChange = ({ columns, targetKeys }: { columns: columnItem[]; targetKeys: string[] }) => {
       emit("update:columns", columns);
       emit("update:defaultColumnSelected", targetKeys);
     };
+    // 计算表格字段
+    const DefaultSelectKeys = computed(()=>{
+      if(props.defaultColumnSelected && props.defaultColumnSelected.length){
+        return props.defaultColumnSelected;
+      }else{
+        return props.columns ? props.columns.map((item)=>item.dataIndex):[];
+      }
+    });
     return () => (
       <div>
         {/* 搜索栏 */}
@@ -128,7 +136,7 @@ export default defineComponent({
             loading={props.loading}
             v-show={showSerach.value}
             style={{
-              margin:"5px 0"
+              margin: "5px 0"
             }}
             column={props.columns}
             onSearch={(val: object) => emit("search", val)}
@@ -205,9 +213,13 @@ export default defineComponent({
                   </Tooltip>
                   <Tooltip title="字段">
                     <ColumnPicker
-                      defaultSelected={props.defaultColumnSelected}
-                      columns={sourceColumns.value} 
-                      onChange={ColumnPickerChange} />
+                      defaultSelected={DefaultSelectKeys.value}
+                      columns={sourceColumns.value}
+                      onChange={ColumnPickerChange} 
+                      v-slots={{
+                        titleRight:slots.columnSelectTitleRight ? slots.columnSelectTitleRight : null
+                      }}
+                    />
                   </Tooltip>
                 </Space>
               ),
@@ -216,12 +228,12 @@ export default defineComponent({
         )}
         {slots.tab ? slots.tab() : ""}
         {/* 表格 */}
-        {props.showTable && (
+        {props.showTable && DefaultSelectKeys.value.length>0 ? (
           <Table
             {...props}
             {...attrs}
             size={TableSize.value}
-            columns={TableColumnSelected(props.columns,props.defaultColumnSelected)}
+            columns={TableColumnSelected(props.columns, props.defaultColumnSelected)}
             onChange={handleTableChange}
             row-selection={
               props.rowskeys
@@ -238,6 +250,23 @@ export default defineComponent({
                 ? slots.expandedRowRender
                 : null,
             }}
+          />
+        ):(
+          <Table
+            {...props}
+            {...attrs}
+            size={TableSize.value}
+            columns={TableColumnSelected(props.columns, props.defaultColumnSelected)}
+            onChange={handleTableChange}
+            row-selection={
+              props.rowskeys
+                ? {
+                  selectedRowKeys: props.rowskeys,
+                  onChange: (selectedRowKeys: Array<number | string>) =>
+                    onSelectChange(selectedRowKeys, props.pagination),
+                }
+                : null
+            }
           />
         )}
       </div>
