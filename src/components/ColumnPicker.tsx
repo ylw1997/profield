@@ -1,17 +1,17 @@
 /*
  * @Author: yangliwei 1280426581@qq.com
  * @Date: 2022-10-18 10:32:43
- * @LastEditTime: 2022-10-20 10:43:03
+ * @LastEditTime: 2022-10-20 13:46:04
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\components\ColumnPicker.tsx
  * Copyright (c) 2022 by yangliwei 1280426581@qq.com, All Rights Reserved. 
  * @Description: 
  */
-import { Popover, Space } from "ant-design-vue";
-import { defineComponent, Prop, ref, computed, watchEffect } from 'vue';
+import { Button, Popover, Space } from "ant-design-vue";
+import { defineComponent, Prop, ref, computed } from 'vue';
 import { columnItem } from "../types";
-import { FunnelPlotOutlined } from "@ant-design/icons-vue"
-import { Transfer, Button } from "ant-design-vue"
+import { FunnelPlotOutlined, VerticalAlignTopOutlined, VerticalAlignBottomOutlined } from "@ant-design/icons-vue"
+import { Transfer } from "ant-design-vue"
 import { TransferItem } from "ant-design-vue/lib/transfer";
 
 
@@ -95,19 +95,26 @@ export default defineComponent({
                     display: "flex",
                     justifyContent: "space-between",
                     alignItems: "center",
-                    width: targetKeys.value && targetKeys.value.length >= 6? "182px": "200px"
+                    width: targetKeys.value && targetKeys.value.length >= 6 ? "190px" : "200px"
                   }}>
                     <span style={{ whiteSpace: "normal" }}>{item.title}</span>
-                    {targetKeys.value && targetKeys.value.length > 1 && item.key && targetKeys.value.find(a => a === item.key) ? <Space>
-                      {
-                        targetKeys.value.findIndex((a) => a === item.key!) > 0 ?
-                          <Button onClick={(event) => move(item.key!, "up", event)} type="primary" size="small" >上移</Button> : null
-                      }
-                      {
-                        targetKeys.value.findIndex((a) => a === item.key!) < targetKeys.value.length - 1 ?
-                          <Button onClick={(event) => move(item.key!, "down", event)} type="primary" size="small" >下移</Button> : null
-                      }
-                    </Space> : null}
+                    {targetKeys.value && targetKeys.value.length > 1 && item.key && targetKeys.value.find(a => a === item.key) ?
+                      <Space size={5} >
+                        {
+                          targetKeys.value.findIndex((a) => a === item.key!) > 0 ?
+                            <Button onClick={(e) => move(item.key!, "up", e)} title="上移一行" size="small" type="link" >
+                              <VerticalAlignTopOutlined />
+                            </Button>
+                            : null
+                        }
+                        {
+                          targetKeys.value.findIndex((a) => a === item.key!) < targetKeys.value.length - 1 ?
+                            <Button onClick={(e) => move(item.key!, "down", e)} title="下移一行" size="small" type="link" >
+                              <VerticalAlignBottomOutlined />
+                            </Button>
+                            : null
+                        }
+                      </Space> : null}
                   </div>
                 )}
                 showSearch
