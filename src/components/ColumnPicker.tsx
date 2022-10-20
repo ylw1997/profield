@@ -1,7 +1,7 @@
 /*
  * @Author: yangliwei 1280426581@qq.com
  * @Date: 2022-10-18 10:32:43
- * @LastEditTime: 2022-10-20 13:46:04
+ * @LastEditTime: 2022-10-20 14:05:08
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\components\ColumnPicker.tsx
  * Copyright (c) 2022 by yangliwei 1280426581@qq.com, All Rights Reserved. 
@@ -13,7 +13,7 @@ import { columnItem } from "../types";
 import { FunnelPlotOutlined, VerticalAlignTopOutlined, VerticalAlignBottomOutlined } from "@ant-design/icons-vue"
 import { Transfer } from "ant-design-vue"
 import { TransferItem } from "ant-design-vue/lib/transfer";
-
+import "./ColumnPicker.less"
 
 export default defineComponent({
   name: "ColumnPicker",
