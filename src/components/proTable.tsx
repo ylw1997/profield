@@ -1,7 +1,7 @@
 /*
  * @Author: YangLiwei
  * @Date: 2022-06-27 10:13:31
- * @LastEditTime: 2022-10-18 17:52:04
+ * @LastEditTime: 2022-10-20 10:21:00
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\components\proTable.tsx
  * @Description: 表格封装
@@ -138,7 +138,7 @@ export default defineComponent({
             style={{
               margin: "5px 0"
             }}
-            column={props.columns}
+            column={TableColumnSelected(props.columns, props.defaultColumnSelected)}
             onSearch={(val: object) => emit("search", val)}
             onReset={(val: string) => emit("reset", val)}
             onChangeData={(val: object) => {
