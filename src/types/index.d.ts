@@ -1,7 +1,7 @@
 /*
  * @Author: yangliwei 1280426581@qq.com
  * @Date: 2022-09-26 14:25:58
- * @LastEditTime: 2022-10-09 15:25:29
+ * @LastEditTime: 2022-10-24 13:49:32
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\types\index.d.ts
  * Copyright (c) 2022 by yangliwei 1280426581@qq.com, All Rights Reserved. 
@@ -134,5 +134,6 @@ export interface columnItem extends ColumnType {
   cascaderKeyArray?: string[]; //级联选择后的对应字段
   slot?: string; //插槽名称
   tips?: string; //提示信息
+  isArray?: boolean; //是否是数组
   [str: string]: any;
 }

@@ -4,7 +4,7 @@ import { columnItem } from "../types/index";
 /*
  * @Author: yangliwei 1280426581@qq.com
  * @Date: 2022-09-27 13:55:41
- * @LastEditTime: 2022-10-18 13:59:29
+ * @LastEditTime: 2022-10-24 15:02:49
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\utils\index.ts
  * Copyright (c) 2022 by yangliwei 1280426581@qq.com, All Rights Reserved. 
@@ -30,7 +30,7 @@ export const ValidateItemType = (
   // if (!columnItem.required) return undefined;
   if (columnItem.ValidateType) return columnItem.ValidateType;
   const type = columnItem.type;
-  if (type === "select") {
+  if (type === "select" || columnItem.isArray) {
     return "any";
   }
   if (type == "upload" || type == "text" || type == "textarea") {

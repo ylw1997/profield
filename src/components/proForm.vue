@@ -1,7 +1,7 @@
 <!--
  * @Author: YangLiwei
  * @Date: 2021-03-30 11:30:01
- * @LastEditTime: 2022-10-09 13:41:23
+ * @LastEditTime: 2022-10-24 16:55:40
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\components\proForm.vue
  * @Description: 
@@ -46,6 +46,10 @@
                   :column="item"
                   :formModel="formModel"
                 ></slot>
+              </template>
+              <!-- 如果是数组 -->
+              <template v-else-if="item.isArray">
+                <ArrayField v-bind="item" v-model:value="formModel[item.dataIndex]" />
               </template>
               <!-- 如果是tree -->
               <ProField
@@ -94,7 +98,8 @@
 <script lang="ts">
   export default {
     name: "proForm",
-  }
+    components: { ArrayField }
+}
 </script>
 <script lang="ts" setup>
 import useForm from "../hooks/useForm";
@@ -104,6 +109,7 @@ import ProPanel from "./proPanel";
 import { Prop, useSlots } from "vue";
 import { columnItem } from "../types";
 import lookField from './lookField';
+import ArrayField from "./ArrayField";
 
 const slots = !!useSlots().default;
 
