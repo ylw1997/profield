@@ -1,7 +1,7 @@
 /*
  * @Author: yangliwei 1280426581@qq.com
  * @Date: 2022-10-24 11:00:05
- * @LastEditTime: 2022-10-24 13:38:28
+ * @LastEditTime: 2022-10-25 09:39:32
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\components\ArrayField.tsx
  * Copyright (c) 2022 by yangliwei 1280426581@qq.com, All Rights Reserved. 
@@ -34,7 +34,7 @@ export default defineComponent({
         {
           data.value.map((_, index) => <FormItem style={{ marginBottom: "0px" }} >
             <div style="display: flex;align-items: center;margin-top: 10px;">
-              <ProField {...attrs} v-model:value={data.value[index]} placeholder="请输入" />
+              <ProField {...attrs} v-model:value={data.value[index]}/>
               <MinusCircleOutlined onClick={() => data.value.splice(index, 1)} style="margin-left: 10px;font-size: large;" />
             </div>
           </FormItem>)

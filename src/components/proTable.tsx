@@ -1,7 +1,7 @@
 /*
  * @Author: YangLiwei
  * @Date: 2022-06-27 10:13:31
- * @LastEditTime: 2022-10-20 10:21:00
+ * @LastEditTime: 2022-10-25 15:40:37
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\components\proTable.tsx
  * @Description: 表格封装
@@ -121,11 +121,11 @@ export default defineComponent({
       emit("update:defaultColumnSelected", targetKeys);
     };
     // 计算表格字段
-    const DefaultSelectKeys = computed(()=>{
-      if(props.defaultColumnSelected && props.defaultColumnSelected.length){
+    const DefaultSelectKeys = computed(() => {
+      if (props.defaultColumnSelected && props.defaultColumnSelected.length) {
         return props.defaultColumnSelected;
-      }else{
-        return props.columns ? props.columns.map((item)=>item.dataIndex):[];
+      } else {
+        return props.columns ? props.columns.map((item) => item.dataIndex) : [];
       }
     });
     return () => (
@@ -182,12 +182,12 @@ export default defineComponent({
                       onClick={() => emit("search", SearchFormData.value)}
                     />
                   </Tooltip>
-                  <Tooltip title="查询">
+                  {props.showSearch && <Tooltip title="查询">
                     <SearchOutlined
                       class="link-color"
                       onClick={() => (showSerach.value = !showSerach.value)}
                     />
-                  </Tooltip>
+                  </Tooltip>}
                   <Tooltip title="密度">
                     <Dropdown
                       trigger={["click"]}
@@ -215,9 +215,9 @@ export default defineComponent({
                     <ColumnPicker
                       defaultSelected={DefaultSelectKeys.value}
                       columns={sourceColumns.value}
-                      onChange={ColumnPickerChange} 
+                      onChange={ColumnPickerChange}
                       v-slots={{
-                        titleRight:slots.columnSelectTitleRight ? slots.columnSelectTitleRight : null
+                        titleRight: slots.columnSelectTitleRight ? slots.columnSelectTitleRight : null
                       }}
                     />
                   </Tooltip>
@@ -228,7 +228,7 @@ export default defineComponent({
         )}
         {slots.tab ? slots.tab() : ""}
         {/* 表格 */}
-        {props.showTable && DefaultSelectKeys.value.length>0 ? (
+        {props.showTable && DefaultSelectKeys.value.length > 0 ? (
           <Table
             {...props}
             {...attrs}
@@ -251,7 +251,7 @@ export default defineComponent({
                 : null,
             }}
           />
-        ):(
+        ) : (
           <Table
             {...props}
             {...attrs}
