@@ -4,6 +4,8 @@
 
 - github: [profield](https://github.com/ylw1997/profield)
 
+- 文档地址: [profield](https://www.yangliwei.top/profield/README.html)
+
 - proField 是一系列基于 ant design vue 的 组件库
 
 - 旨在提供一套快速生成增删改查,表单,弹窗,上传组件,以及一些常用的 hooks 和工具函数
