@@ -1,7 +1,7 @@
 /*
  * @Author: YangLiwei
  * @Date: 2022-07-15 10:39:32
- * @LastEditTime: 2022-09-27 14:02:01
+ * @LastEditTime: 2022-10-31 14:00:12
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\components\YUpload.tsx
  * @Description:
@@ -36,7 +36,7 @@ export default defineComponent({
       default: () => () => null,
     },
   },
-  emits: ["update:value"],
+  emits: ["update:value", "change"],
   setup(props, { emit, attrs }) {
     const fileList = ref<UploadFile[]>([]);
     const str = ref("");
@@ -45,6 +45,7 @@ export default defineComponent({
       const fileArrStr = fileArrtoStrArr(fileList);
       str.value = fileArrStr;
       emit("update:value", fileArrStr);
+      emit("change", { fileList, fileArrStr });
     };
 
     watch(props, (val) => {

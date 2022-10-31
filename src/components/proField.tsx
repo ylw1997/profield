@@ -1,7 +1,7 @@
 /*
  * @Author: YangLiwei
  * @Date: 2021-05-16 14:56:37
- * @LastEditTime: 2022-10-09 11:00:57
+ * @LastEditTime: 2022-10-31 13:06:51
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\components\proField.tsx
  * @Description:原子组件
@@ -25,6 +25,8 @@ import {
 } from "ant-design-vue";
 import YUpload from "./YUpload";
 import { ColumnsTypes } from "../types";
+import { Button } from "ant-design-vue";
+import {UploadOutlined}from "@ant-design/icons-vue";
 const ProField = defineComponent({
   name: "proField",
   props: {
@@ -96,7 +98,9 @@ const ProField = defineComponent({
         return <Select placeholder={"请选择" + prop.title} />;
 
       case "upload":
-        return <Upload title={prop.title} />;
+        return <Upload title={prop.title} >
+          <Button><UploadOutlined /> {prop.title}</Button>
+        </Upload>;
         
       case "YUpload":
         return <YUpload title={prop.title} />;
