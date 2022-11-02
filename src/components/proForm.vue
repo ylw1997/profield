@@ -1,7 +1,7 @@
 <!--
  * @Author: YangLiwei
  * @Date: 2021-03-30 11:30:01
- * @LastEditTime: 2022-10-24 16:55:40
+ * @LastEditTime: 2022-11-02 14:36:40
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\components\proForm.vue
  * @Description: 
@@ -49,7 +49,11 @@
               </template>
               <!-- 如果是数组 -->
               <template v-else-if="item.isArray">
-                <ArrayField v-bind="item" v-model:value="formModel[item.dataIndex]" />
+                <ArrayField 
+                 v-bind="item" 
+                 v-model:value="formModel[item.dataIndex]"
+                 :disabled="item.disabled || (item.disabledFunc ? item.disabledFunc(formModel) : false)"
+                  />
               </template>
               <!-- 如果是tree -->
               <ProField
@@ -58,18 +62,28 @@
                 v-model:selectedKeys="formModel[item.dataIndex]"
                 v-model:checkedKeys="formModel[item.dataIndex]"
                 v-bind="item"
+                :disabled="item.disabled || (item.disabledFunc ? item.disabledFunc(formModel) : false)"
               />
               <!-- 如果是switch,需要传递checked -->
               <ProField
                 v-else-if="item.type == 'switch'"
                 v-model:checked="formModel[item.dataIndex]"
                 v-bind="item"
+                :disabled="item.disabled || (item.disabledFunc ? item.disabledFunc(formModel) : false)"
+                @change="
+                  (...value: any) => {
+                    item.onChangeValue
+                      ? item.onChangeValue(formModel, ...value)
+                      : null;
+                  }
+                "
               />
               <!-- 只需要传递value -->
               <ProField
                 v-else
                 v-model:value="formModel[item.dataIndex]"
                 v-bind="item"
+                :disabled="item.disabled || (item.disabledFunc ? item.disabledFunc(formModel) : false)"
                 @change="
                   (...value: any) => {
                     item.onChangeValue
