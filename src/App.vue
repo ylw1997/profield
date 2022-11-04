@@ -1,7 +1,7 @@
 <!--
  * @Author: yangliwei 1280426581@qq.com
  * @Date: 2022-09-26 14:10:44
- * @LastEditTime: 2022-11-02 14:39:12
+ * @LastEditTime: 2022-11-04 11:04:50
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\App.vue
  * Copyright (c) 2022 by yangliwei 1280426581@qq.com, All Rights Reserved. 
@@ -10,6 +10,7 @@
 
 <template>
   <div>
+    <!-- <YUpload v-model:value="uploadstr" ></YUpload> -->
     <proTable  v-model:columns="columns" :dataSource="dataSource"
       :pagination="false" rowKey="key" :rowskeys="false">
       <template #actionLeft>
@@ -41,6 +42,7 @@ import { ref } from 'vue';
 import proTable from "./components/proTable"
 import { Button, Space } from "ant-design-vue"
 import proForm from "./components/proForm.vue"
+// import YUpload from "./components/YUpload"
 
 const defaultColumnSelected = ref(['id', 'resellerName'])
 const b = ref(['2134', '145s'])
@@ -68,10 +70,10 @@ const columns = ref<columnItem[]>([
   },
   {
     title:"上传",
-    dataIndex:"YU",
+    dataIndex:"upload",
     type:"YUpload",
-    notShowInTable:true,
     notShowInSearch:true,
+    listType: "picture",
     onChangeValue:(_,data)=>{
       console.log(_,data)
     }
@@ -112,6 +114,8 @@ const setDefault = (data: any) => {
   console.log(data.value)
 }
 
+const uploadstr = ref("https://aloha-qa.walmartmobile.cn/esb/object/commonImage/showImageByTemplate/NWQ1OWQwYzUtN2NiYi00YzE2LThjZTktNDM1YWFhMzc3NDZhXzQzNzQyMDIwMDYwODEzNTgzMDgyOS5qcGc=")
+
 const dataSource = ref([
   {
     key: "1",
@@ -122,6 +126,7 @@ const dataSource = ref([
     remark: "备注",
     creationTime: "2021-09-26 14:10:44",
     enabledFlag: "1",
+    upload:"https://aloha-qa.walmartmobile.cn/esb/object/commonImage/showImageByTemplate/NWQ1OWQwYzUtN2NiYi00YzE2LThjZTktNDM1YWFhMzc3NDZhXzQzNzQyMDIwMDYwODEzNTgzMDgyOS5qcGc="
   },
   {
     key: "2",

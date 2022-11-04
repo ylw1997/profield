@@ -1,7 +1,7 @@
 /*
  * @Author: YangLiwei
  * @Date: 2022-07-15 10:39:32
- * @LastEditTime: 2022-10-31 14:00:12
+ * @LastEditTime: 2022-11-04 11:07:13
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\components\YUpload.tsx
  * @Description:
@@ -57,7 +57,7 @@ export default defineComponent({
       } else if (val.value == "" && str.value != "") {
         fileList.value = [];
       }
-    });
+    },{immediate:true});
 
     // 是否显示上传按钮
     const isShowUpload = computed(
