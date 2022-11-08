@@ -1,7 +1,7 @@
 <!--
  * @Author: yangliwei 1280426581@qq.com
  * @Date: 2022-09-26 14:10:44
- * @LastEditTime: 2022-11-04 11:04:50
+ * @LastEditTime: 2022-11-08 16:57:23
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\App.vue
  * Copyright (c) 2022 by yangliwei 1280426581@qq.com, All Rights Reserved. 
@@ -11,10 +11,12 @@
 <template>
   <div>
     <!-- <YUpload v-model:value="uploadstr" ></YUpload> -->
-    <proTable  v-model:columns="columns" :dataSource="dataSource"
-      :pagination="false" rowKey="key" :rowskeys="false">
+    
+    <proTable  v-model:columns="columns" v-model:rowskeys="rowskeys" row-key="id" :dataSource="dataSource"
+      :pagination="false"  >
       <template #actionLeft>
         <Button @click="add" type="primary">新增规格</Button>
+        <Button type="primary" @click="clearRowsKeys">清空选择</Button>
       </template>
       <template #bodyCell="{ column, record }">
         <template v-if="column.dataIndex == 'action'">
@@ -46,6 +48,8 @@ import proForm from "./components/proForm.vue"
 
 const defaultColumnSelected = ref(['id', 'resellerName'])
 const b = ref(['2134', '145s'])
+
+const rowskeys = ref([])
 
 const columns = ref<columnItem[]>([
   {
@@ -146,4 +150,9 @@ const { visible, modelData, add, edit,look } = useModel(columns.value as any);
 const ModelOk = (data: any) => {
   console.log(data,b.value,defaultColumnSelected.value)
 }
+
+const clearRowsKeys = () => {
+  rowskeys.value = []
+}
+
 </script>

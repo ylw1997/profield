@@ -1,12 +1,12 @@
 /*
  * @Author: YangLiwei
  * @Date: 2022-06-27 10:13:31
- * @LastEditTime: 2022-10-25 15:40:37
+ * @LastEditTime: 2022-11-08 17:41:42
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\components\proTable.tsx
  * @Description: 表格封装
  */
-import { defineComponent, ref, Prop, computed } from "vue";
+import { defineComponent, ref, Prop, computed, watchEffect } from "vue";
 import tableAction from "./tableAction";
 import SearchForm from "./searchForm.vue";
 import {
@@ -128,6 +128,13 @@ export default defineComponent({
         return props.columns ? props.columns.map((item) => item.dataIndex) : [];
       }
     });
+
+    watchEffect(()=>{
+      if(props.rowskeys && props.rowskeys instanceof Array && props.rowskeys.length==0){
+        SelectedRowKeys.value = [];
+      }
+    });
+
     return () => (
       <div>
         {/* 搜索栏 */}
@@ -163,7 +170,7 @@ export default defineComponent({
                       banner
                       message={`已选择 ${SelectedRowKeys.value.length} 条数据`}
                       closable
-                      onClose={() => (SelectedRowKeys.value = [])}
+                      onClose={() => (SelectedRowKeys.value = [], emit("update:rowskeys", []))}
                       v-slots={{
                         closeIcon: () => (
                           <a style={{ fontSize: "14px" }}>清空</a>

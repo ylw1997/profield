@@ -1,14 +1,14 @@
 /*
  * @Author: YangLiwei
  * @Date: 2021-01-19 18:31:56
- * @LastEditTime: 2022-10-08 10:14:19
+ * @LastEditTime: 2022-11-08 17:40:39
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\hooks\useTable.ts
  * @Description:table hook
  */
 import { TablePaginationConfig } from "ant-design-vue";
 import { SorterResult } from "ant-design-vue/lib/table/interface";
-import { ref, watchEffect } from "vue";
+import { ref } from "vue";
 import { tableChangeFunc } from "../utils/page";
 /**
  * 封装表格事件
@@ -27,16 +27,6 @@ const useTable = (emit: any) => {
 
   const getRowKeys = (obj: object) => [...Object.values(obj)].flat();
 
-  // 当选中行发生变化时,更新选中行
-  watchEffect(() => {
-    if (SelectedRowKeys.value.length > 0) {
-      emit("update:rowskeys", getRowKeys(SelectedRowKeysWithPage.value));
-    } else {
-      SelectedRowKeysWithPage.value = {};
-      emit("update:rowskeys", []);
-    }
-  });
-
   //选择改变
   const onSelectChange = (
     selectedRowKeys: (string | number)[],
@@ -47,8 +37,18 @@ const useTable = (emit: any) => {
         ...SelectedRowKeysWithPage.value,
         [pagination?.current || 1]: selectedRowKeys,
       };
+    }else{
+      SelectedRowKeysWithPage.value = {
+        [1]: selectedRowKeys,
+      };
     }
     SelectedRowKeys.value = getRowKeys(SelectedRowKeysWithPage.value);
+    if (SelectedRowKeys.value.length > 0 ) {
+      emit("update:rowskeys", SelectedRowKeys.value);
+    } else {
+      SelectedRowKeysWithPage.value = {};
+      emit("update:rowskeys", []);
+    }
   };
 
   //分页改变
