@@ -1,6 +1,6 @@
 {
   "name": "profield",
-  "version": "1.68.0",
+  "version": "1.69.0",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -35,6 +35,11 @@
     "vite": "^3.2.3",
     "vite-plugin-dts": "^1.7.0",
     "vue-tsc": "^1.0.9"
+  },
+  "peerDependencies": {
+    "vue": "^3.2.41",
+    "ant-design-vue": "^3.2.15",
+    "@types/node": "18.11.7"
   },
   "description": "",
   "keywords": [],
