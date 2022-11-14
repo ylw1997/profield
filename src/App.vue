@@ -1,7 +1,7 @@
 <!--
  * @Author: yangliwei 1280426581@qq.com
  * @Date: 2022-09-26 14:10:44
- * @LastEditTime: 2022-11-08 16:57:23
+ * @LastEditTime: 2022-11-14 09:24:49
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\App.vue
  * Copyright (c) 2022 by yangliwei 1280426581@qq.com, All Rights Reserved. 
@@ -15,7 +15,7 @@
     <proTable  v-model:columns="columns" v-model:rowskeys="rowskeys" row-key="id" :dataSource="dataSource"
       :pagination="false"  >
       <template #actionLeft>
-        <Button @click="add" type="primary">新增规格</Button>
+        <Button @click="addFunc" type="primary">新增规格</Button>
         <Button type="primary" @click="clearRowsKeys">清空选择</Button>
       </template>
       <template #bodyCell="{ column, record }">
@@ -153,6 +153,10 @@ const ModelOk = (data: any) => {
 
 const clearRowsKeys = () => {
   rowskeys.value = []
+}
+
+const addFunc = ()=>{
+  add()
 }
 
 </script>

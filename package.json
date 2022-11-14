@@ -1,6 +1,6 @@
 {
   "name": "profield",
-  "version": "1.67.0",
+  "version": "1.68.0",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -19,21 +19,21 @@
   },
   "dependencies": {
     "@types/node": "18.11.7",
-    "ant-design-vue": "^3.2.13",
+    "ant-design-vue": "^3.2.15",
     "axios": "^1.1.3",
     "vue": "^3.2.41"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.41.0",
-    "@typescript-eslint/parser": "^5.41.0",
+    "@typescript-eslint/eslint-plugin": "^5.42.1",
+    "@typescript-eslint/parser": "^5.42.1",
     "@vitejs/plugin-vue": "^3.2.0",
-    "@vitejs/plugin-vue-jsx": "^2.1.0",
-    "eslint": "^8.26.0",
-    "eslint-plugin-vue": "^9.6.0",
+    "@vitejs/plugin-vue-jsx": "^2.1.1",
+    "eslint": "^8.27.0",
+    "eslint-plugin-vue": "^9.7.0",
     "less": "^4.1.3",
     "typescript": "^4.8.4",
-    "vite": "^3.2.0",
-    "vite-plugin-dts": "^1.6.6",
+    "vite": "^3.2.3",
+    "vite-plugin-dts": "^1.7.0",
     "vue-tsc": "^1.0.9"
   },
   "description": "",

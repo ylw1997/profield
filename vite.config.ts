@@ -1,7 +1,7 @@
 /*
  * @Author: yangliwei 1280426581@qq.com
  * @Date: 2022-09-26 14:10:44
- * @LastEditTime: 2022-10-10 15:42:20
+ * @LastEditTime: 2022-11-09 15:27:04
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\vite.config.ts
  * Copyright (c) 2022 by yangliwei 1280426581@qq.com, All Rights Reserved. 
@@ -38,6 +38,9 @@ export default defineConfig({
         format: "es",
         entryFileNames: "[name].js",
         dir: "dist",
+        globals: {
+          vue: "Vue",
+        },
         // manualChunks(id){
         //   if(id.includes("node_modules")){
         //     return "vendor";

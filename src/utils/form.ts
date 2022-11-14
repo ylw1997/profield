@@ -1,7 +1,7 @@
 /*
  * @Author: YangLiwei
  * @Date: 2022-07-11 10:36:59
- * @LastEditTime: 2022-10-24 14:41:45
+ * @LastEditTime: 2022-11-14 09:26:27
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\utils\form.ts
  * @Description: 表单数据处理
@@ -34,8 +34,13 @@ export const convertDataToFormData = (columns: columnItem[], record: any) => {
   const obj: ModelType = { ...record };
   columns.forEach((item) => {
     // 如果数组,则JSON.parse
-    if (item.isArray) {
-      obj[item.dataIndex] = JSON.parse(obj[item.dataIndex]);
+    if (item.isArray&&obj[item.dataIndex]) {
+      try {
+        obj[item.dataIndex] = JSON.parse(obj[item.dataIndex]);
+      } catch (error) {
+        obj[item.dataIndex] = [];
+        console.error(error);
+      }
     }
     // 如果是日期,则转换
     if (

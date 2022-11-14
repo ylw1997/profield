@@ -1,7 +1,7 @@
 /*
  * @Author: YangLiwei
  * @Date: 2021-01-18 10:05:49
- * @LastEditTime: 2022-10-08 11:36:59
+ * @LastEditTime: 2022-11-14 09:25:45
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\hooks\useModel.ts
  * @Description:弹窗hook
@@ -9,7 +9,7 @@
 
 import { ref } from "vue";
 import { columnItem } from "../types";
-import { ModelType, convertDataToFormData } from "../utils/form";
+import { convertDataToFormData } from "../utils/form";
 
 /**
  * 添加编辑弹窗hook
@@ -19,8 +19,8 @@ import { ModelType, convertDataToFormData } from "../utils/form";
 const useModel = (columns: columnItem[]) => {
   const visible = ref(false);
   const modelData = ref();
-  const add = () => {
-    showData({}, "add");
+  const add = (params?:any) => {
+    showData(params?params:{}, "add");
   };
   /**
    * 编辑
@@ -43,12 +43,7 @@ const useModel = (columns: columnItem[]) => {
     record: { [text: string]: any },
     type: "look" | "edit" | "add"
   ) => {
-    const obj: ModelType = { ...record, ylwType: type };
-    if (type === "add") {
-      modelData.value = { ylwType: type };
-    } else {
-      modelData.value = convertDataToFormData(columns, obj);
-    }
+    modelData.value = convertDataToFormData(columns, { ...record, ylwType: type });
     visible.value = true;
   };
 
