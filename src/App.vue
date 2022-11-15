@@ -1,7 +1,7 @@
 <!--
  * @Author: yangliwei 1280426581@qq.com
  * @Date: 2022-09-26 14:10:44
- * @LastEditTime: 2022-11-14 09:24:49
+ * @LastEditTime: 2022-11-15 15:21:59
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\App.vue
  * Copyright (c) 2022 by yangliwei 1280426581@qq.com, All Rights Reserved. 
@@ -11,9 +11,9 @@
 <template>
   <div>
     <!-- <YUpload v-model:value="uploadstr" ></YUpload> -->
-    
     <proTable  v-model:columns="columns" v-model:rowskeys="rowskeys" row-key="id" :dataSource="dataSource"
-      :pagination="false"  >
+      :pagination="false"
+      select-type="radio"  >
       <template #actionLeft>
         <Button @click="addFunc" type="primary">新增规格</Button>
         <Button type="primary" @click="clearRowsKeys">清空选择</Button>

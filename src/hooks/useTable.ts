@@ -1,7 +1,7 @@
 /*
  * @Author: YangLiwei
  * @Date: 2021-01-19 18:31:56
- * @LastEditTime: 2022-11-08 17:40:39
+ * @LastEditTime: 2022-11-15 15:35:39
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\hooks\useTable.ts
  * @Description:table hook
@@ -14,7 +14,7 @@ import { tableChangeFunc } from "../utils/page";
  * 封装表格事件
  * @param emit emit方法
  */
-const useTable = (emit: any) => {
+const useTable = (emit: any,selectType?:"checkbox" | "radio") => {
   const rowclass = (_: any, index: number) => {
     if (index % 2 == 1) {
       return "rowclass";
@@ -32,7 +32,7 @@ const useTable = (emit: any) => {
     selectedRowKeys: (string | number)[],
     pagination: false | TablePaginationConfig | undefined
   ) => {
-    if (pagination) {
+    if (pagination && selectType=="checkbox") {
       SelectedRowKeysWithPage.value = {
         ...SelectedRowKeysWithPage.value,
         [pagination?.current || 1]: selectedRowKeys,

@@ -1,7 +1,7 @@
 /*
  * @Author: YangLiwei
  * @Date: 2022-06-27 10:13:31
- * @LastEditTime: 2022-11-08 17:41:42
+ * @LastEditTime: 2022-11-15 15:33:49
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\components\proTable.tsx
  * @Description: 表格封装
@@ -94,6 +94,10 @@ export default defineComponent({
       type: Array,
       default: () => [],
     } as Prop<string[]>,
+    selectType:{
+      type:String,
+      default:()=> "checkbox"
+    } as Prop<"checkbox" | "radio">
   },
   emits: [
     "update:rowskeys",
@@ -107,7 +111,7 @@ export default defineComponent({
   setup(props, { slots, emit, attrs }) {
     const sourceColumns = ref<columnItem[]>(TableColumns(props.columns));
     const { onSelectChange, handleTableChange, SelectedRowKeys } =
-      useTable(emit);
+      useTable(emit,props.selectType);
     const showSerach = ref(true);
     const SearchFormData = ref({});
     const TableSize = ref<SizeType>(props.customSize);
@@ -248,6 +252,7 @@ export default defineComponent({
                   selectedRowKeys: props.rowskeys,
                   onChange: (selectedRowKeys: Array<number | string>) =>
                     onSelectChange(selectedRowKeys, props.pagination),
+                  type: props.selectType,
                 }
                 : null
             }
