@@ -1,7 +1,7 @@
 <!--
  * @Author: YangLiwei
  * @Date: 2021-03-30 11:30:01
- * @LastEditTime: 2022-11-02 14:36:40
+ * @LastEditTime: 2022-11-17 14:18:33
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\components\proForm.vue
  * @Description: 
@@ -92,14 +92,12 @@
                   }
                 "
               />
-              <span v-if="item.tips" class="text-gray-500">{{
-                item.tips
-              }}</span>
+              <span v-if="item.tips" v-html="item.tips" style="color:#878787; margin-top: 5px; display: inline-block;" ></span>
             </FormItem>
           </Col>
         </template>
         <Col v-if="noDrawerOrModal" :span="colSpan">
-          <Button type="default" @click="cancelFunc" class="mr-3">取消</Button>
+          <Button type="default" @click="cancelFunc" style="margin-right:10px" >取消</Button>
           <Button type="primary" @click="submitFunc">提交</Button>
         </Col>
         <Col v-if="slots" :span="colSpan">

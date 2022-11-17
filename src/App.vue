@@ -1,7 +1,7 @@
 <!--
  * @Author: yangliwei 1280426581@qq.com
  * @Date: 2022-09-26 14:10:44
- * @LastEditTime: 2022-11-15 15:21:59
+ * @LastEditTime: 2022-11-17 14:15:28
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\App.vue
  * Copyright (c) 2022 by yangliwei 1280426581@qq.com, All Rights Reserved. 
@@ -80,7 +80,8 @@ const columns = ref<columnItem[]>([
     listType: "picture",
     onChangeValue:(_,data)=>{
       console.log(_,data)
-    }
+    },
+    tips:"123"
   },
   {
     title: "备注",
