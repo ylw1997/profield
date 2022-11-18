@@ -1,7 +1,7 @@
 /*
  * @Author: YangLiwei
  * @Date: 2022-07-15 10:39:32
- * @LastEditTime: 2022-11-04 11:07:13
+ * @LastEditTime: 2022-11-18 16:51:11
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\components\YUpload.tsx
  * @Description:
@@ -84,6 +84,7 @@ export default defineComponent({
           v-model:file-list={fileList.value}
           onChange={fileChange}
           beforeUpload={beforeUpload}
+          {...attrs}
         >
           {isShowUpload.value ? (
             attrs.listType != "picture-card" ? (

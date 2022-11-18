@@ -1,7 +1,7 @@
 <!--
  * @Author: yangliwei 1280426581@qq.com
  * @Date: 2022-09-26 14:10:44
- * @LastEditTime: 2022-11-17 14:15:28
+ * @LastEditTime: 2022-11-18 16:55:40
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\App.vue
  * Copyright (c) 2022 by yangliwei 1280426581@qq.com, All Rights Reserved. 
@@ -77,9 +77,12 @@ const columns = ref<columnItem[]>([
     dataIndex:"upload",
     type:"YUpload",
     notShowInSearch:true,
-    listType: "picture",
+    listType: "picture-card",
     onChangeValue:(_,data)=>{
       console.log(_,data)
+    },
+    onPreview: (value: any) => {
+      console.log(value);
     },
     tips:"123"
   },
