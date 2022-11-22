@@ -4,7 +4,7 @@ import { columnItem } from "../types/index";
 /*
  * @Author: yangliwei 1280426581@qq.com
  * @Date: 2022-09-27 13:55:41
- * @LastEditTime: 2022-10-24 15:02:49
+ * @LastEditTime: 2022-11-22 10:13:24
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\utils\index.ts
  * Copyright (c) 2022 by yangliwei 1280426581@qq.com, All Rights Reserved. 
@@ -93,13 +93,19 @@ export const TableColumns = (columns?: columnItem[]): columnItem[] => {
 };
 
 // 筛选出需要在表格显示的列
-export const TableColumnSelected = (columns?: any[],selectedKeys?: string[], ) => {
+export const TableColumnSelected = (columns?: any[],selectedKeys?: string[],width=100 ) => {
+  let columnList = [];
   if (columns&&columns.length>0) {
     if(selectedKeys&&selectedKeys.length>0){
-      return columns.filter((item) => selectedKeys.includes(item.dataIndex));
+      columnList =  columns.filter((item) => selectedKeys.includes(item.dataIndex));
     }else{
-      return TableColumns(columns);
+      columnList =  TableColumns(columns);
     }
+    columnList.map(item=>{
+      item.dataIndex = item.showField?item.showField:item.dataIndex;
+      item.width = item.width?item.width:width;
+    });
+    return columnList;
   }
   return [];
 };

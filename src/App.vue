@@ -1,7 +1,7 @@
 <!--
  * @Author: yangliwei 1280426581@qq.com
  * @Date: 2022-09-26 14:10:44
- * @LastEditTime: 2022-11-18 16:55:40
+ * @LastEditTime: 2022-11-22 10:13:10
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\App.vue
  * Copyright (c) 2022 by yangliwei 1280426581@qq.com, All Rights Reserved. 
@@ -13,7 +13,8 @@
     <!-- <YUpload v-model:value="uploadstr" ></YUpload> -->
     <proTable  v-model:columns="columns" v-model:rowskeys="rowskeys" row-key="id" :dataSource="dataSource"
       :pagination="false"
-      select-type="radio"  >
+      select-type="radio" 
+      :scroll="{ x: 1000}" >
       <template #actionLeft>
         <Button @click="addFunc" type="primary">新增规格</Button>
         <Button type="primary" @click="clearRowsKeys">清空选择</Button>
@@ -84,13 +85,13 @@ const columns = ref<columnItem[]>([
     onPreview: (value: any) => {
       console.log(value);
     },
-    tips:"123"
+    tips:"123",
+    width: 100,
   },
   {
     title: "备注",
     type: "textarea",
-    dataIndex: "remark",
-    notShowInTable: true,
+    dataIndex: "remarkText",
     notShowInSearch: true,
   },
   {
@@ -131,7 +132,7 @@ const dataSource = ref([
     resellerName: '["张三","李四"]',
     appId: "123",
     tel: "123456789",
-    remark: "备注",
+    remarkText: "备注",
     creationTime: "2021-09-26 14:10:44",
     enabledFlag: "1",
     upload:"https://aloha-qa.walmartmobile.cn/esb/object/commonImage/showImageByTemplate/NWQ1OWQwYzUtN2NiYi00YzE2LThjZTktNDM1YWFhMzc3NDZhXzQzNzQyMDIwMDYwODEzNTgzMDgyOS5qcGc="
@@ -142,7 +143,7 @@ const dataSource = ref([
     resellerName: '["张三"]',
     appId: "123",
     tel: "123456789",
-    remark: "备注",
+    remarkText: "备注",
     creationTime: "2021-09-26 14:10:44",
     enabledFlag: "1",
   }
