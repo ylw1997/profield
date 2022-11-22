@@ -1,7 +1,7 @@
 /*
  * @Author: yangliwei 1280426581@qq.com
  * @Date: 2022-09-26 14:25:58
- * @LastEditTime: 2022-11-22 14:31:06
+ * @LastEditTime: 2022-11-22 15:36:09
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\types\index.d.ts
  * Copyright (c) 2022 by yangliwei 1280426581@qq.com, All Rights Reserved. 
@@ -140,5 +140,6 @@ export interface columnItem extends ColumnType {
   showField?: string; //显示在表格的字段名称
   width?: number|string; //宽度
   searchRangeField?: [string,string]; //搜索范围的字段 例如：[min,max]
+  serachFold?: boolean; //是否fold
   [str: string]: any;
 }

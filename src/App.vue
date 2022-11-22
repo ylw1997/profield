@@ -1,7 +1,7 @@
 <!--
  * @Author: yangliwei 1280426581@qq.com
  * @Date: 2022-09-26 14:10:44
- * @LastEditTime: 2022-11-22 14:35:53
+ * @LastEditTime: 2022-11-22 16:49:28
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\App.vue
  * Copyright (c) 2022 by yangliwei 1280426581@qq.com, All Rights Reserved. 
@@ -94,16 +94,15 @@ const columns = ref<columnItem[]>([
     showField: "showRemark",
     dataIndex: "remark",
     searchRangeField:["remarkStart","remarkEnd"],
-    notShowInTable: true,
-    notShowInSearch:false
+    serachFold:true,
   },
   {
     title: "创建时间",
     dataIndex: "creationTime",
     type: "dateTime",
     notShowInAddOrEdit: true,
-    notShowInSearch: true,
     customRender: ({ text }) => timeFormat(text, "YYYY-MM-DD HH:mm:ss"),
+    serachFold:true,
   },
   {
     title: "状态",
