@@ -1,7 +1,7 @@
 <!--
  * @Author: YangLiwei
  * @Date: 2021-05-16 13:26:30
- * @LastEditTime: 2022-11-22 16:53:13
+ * @LastEditTime: 2022-11-22 16:58:17
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\components\searchForm.vue
  * @Description: 
@@ -34,7 +34,7 @@
           <Space>
             <Button :loading="loading" @click="search" type="primary">查询</Button>
             <Button @click="reset" type="default">重置</Button>
-            <Button @click="isFold = !isFold" type="default"> 
+            <Button @click="isFold = !isFold" v-if="showProSearch" type="default"> 
               <DownOutlined v-if="isFold"/>
               <UpOutlined v-else />
               高级搜索</Button>
@@ -79,6 +79,10 @@ const isFold = ref(true);
 const columnFilter = computed(() => {
   const carr = props.column ? props.column : [];
   return isFold.value ? carr.filter(item => !item.serachFold) : carr;
+});
+
+const showProSearch = computed(() => {
+  return props.column?props.column.some(item => item.serachFold):false;
 });
 
 const emit = defineEmits(["search", "reset", "changeData"]);

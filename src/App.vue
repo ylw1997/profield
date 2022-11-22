@@ -1,7 +1,7 @@
 <!--
  * @Author: yangliwei 1280426581@qq.com
  * @Date: 2022-09-26 14:10:44
- * @LastEditTime: 2022-11-22 16:49:28
+ * @LastEditTime: 2022-11-22 16:58:32
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\App.vue
  * Copyright (c) 2022 by yangliwei 1280426581@qq.com, All Rights Reserved. 
@@ -102,7 +102,6 @@ const columns = ref<columnItem[]>([
     type: "dateTime",
     notShowInAddOrEdit: true,
     customRender: ({ text }) => timeFormat(text, "YYYY-MM-DD HH:mm:ss"),
-    serachFold:true,
   },
   {
     title: "状态",
