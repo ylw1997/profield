@@ -1,7 +1,7 @@
 <!--
  * @Author: yangliwei 1280426581@qq.com
  * @Date: 2022-09-26 14:10:44
- * @LastEditTime: 2022-11-22 10:13:10
+ * @LastEditTime: 2022-11-22 11:58:01
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\App.vue
  * Copyright (c) 2022 by yangliwei 1280426581@qq.com, All Rights Reserved. 
@@ -10,7 +10,6 @@
 
 <template>
   <div>
-    <!-- <YUpload v-model:value="uploadstr" ></YUpload> -->
     <proTable  v-model:columns="columns" v-model:rowskeys="rowskeys" row-key="id" :dataSource="dataSource"
       :pagination="false"
       select-type="radio" 
@@ -71,7 +70,6 @@ const columns = ref<columnItem[]>([
     dataIndex: "tel",
     ValidateType:"any",
     required: true,
-    disabledFunc: ({ ylwType }) => ylwType === "add",
   },
   {
     title:"上传",
@@ -91,7 +89,8 @@ const columns = ref<columnItem[]>([
   {
     title: "备注",
     type: "textarea",
-    dataIndex: "remarkText",
+    showField: "showRemark",
+    dataIndex: "remark",
     notShowInSearch: true,
   },
   {
@@ -132,7 +131,7 @@ const dataSource = ref([
     resellerName: '["张三","李四"]',
     appId: "123",
     tel: "123456789",
-    remarkText: "备注",
+    showRemark: "备注",
     creationTime: "2021-09-26 14:10:44",
     enabledFlag: "1",
     upload:"https://aloha-qa.walmartmobile.cn/esb/object/commonImage/showImageByTemplate/NWQ1OWQwYzUtN2NiYi00YzE2LThjZTktNDM1YWFhMzc3NDZhXzQzNzQyMDIwMDYwODEzNTgzMDgyOS5qcGc="
@@ -143,7 +142,7 @@ const dataSource = ref([
     resellerName: '["张三"]',
     appId: "123",
     tel: "123456789",
-    remarkText: "备注",
+    showRemark: "备注",
     creationTime: "2021-09-26 14:10:44",
     enabledFlag: "1",
   }
@@ -153,7 +152,7 @@ const dataSource = ref([
 const { visible, modelData, add, edit,look } = useModel(columns.value as any);
 
 const ModelOk = (data: any) => {
-  console.log(data,b.value,defaultColumnSelected.value)
+  console.log(data)
 }
 
 const clearRowsKeys = () => {

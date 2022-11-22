@@ -1,7 +1,7 @@
 <!--
  * @Author: YangLiwei
  * @Date: 2021-03-30 11:30:01
- * @LastEditTime: 2022-11-17 14:18:33
+ * @LastEditTime: 2022-11-22 11:30:54
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\components\proForm.vue
  * @Description: 
@@ -118,7 +118,7 @@ import useForm from "../hooks/useForm";
 import ProField from "./proField";
 import { Form, FormItem, Row, Col, Button } from "ant-design-vue";
 import ProPanel from "./proPanel";
-import { Prop, useSlots } from "vue";
+import { Prop, useSlots, onMounted } from 'vue';
 import { columnItem } from "../types";
 import lookField from './lookField';
 import ArrayField from "./ArrayField";
@@ -169,6 +169,11 @@ const props = defineProps({
   },
 });
 const emit = defineEmits(["update:visible", "update:data", "ok"]);
+
+
+onMounted(() => {
+ console.log('onMounted',props.columns)
+});
 
 const submitFunc = () => {
   formModel.value.ylwType == "look" ? cancel() : submit();
