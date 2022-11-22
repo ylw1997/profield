@@ -1,7 +1,7 @@
 <!--
  * @Author: yangliwei 1280426581@qq.com
  * @Date: 2022-09-26 14:10:44
- * @LastEditTime: 2022-11-22 11:58:01
+ * @LastEditTime: 2022-11-22 13:46:48
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\App.vue
  * Copyright (c) 2022 by yangliwei 1280426581@qq.com, All Rights Reserved. 
@@ -13,7 +13,8 @@
     <proTable  v-model:columns="columns" v-model:rowskeys="rowskeys" row-key="id" :dataSource="dataSource"
       :pagination="false"
       select-type="radio" 
-      :scroll="{ x: 1000}" >
+      :scroll="{ x: 1000}"
+      @changeData="search" >
       <template #actionLeft>
         <Button @click="addFunc" type="primary">新增规格</Button>
         <Button type="primary" @click="clearRowsKeys">清空选择</Button>
@@ -46,10 +47,11 @@ import { Button, Space } from "ant-design-vue"
 import proForm from "./components/proForm.vue"
 // import YUpload from "./components/YUpload"
 
-const defaultColumnSelected = ref(['id', 'resellerName'])
-const b = ref(['2134', '145s'])
-
 const rowskeys = ref([])
+
+const search = (data: any) => {
+  console.log(data)
+}
 
 const columns = ref<columnItem[]>([
   {
@@ -64,6 +66,7 @@ const columns = ref<columnItem[]>([
     dataIndex: "appId",
     required: true,
     condition: ({ ylwType }) => ylwType === "add",
+    notShowInSearch: true,
   },
   {
     title: "联系人电话",
@@ -88,10 +91,9 @@ const columns = ref<columnItem[]>([
   },
   {
     title: "备注",
-    type: "textarea",
     showField: "showRemark",
     dataIndex: "remark",
-    notShowInSearch: true,
+    searchRangeField:["remarkStart","remarkEnd"],
   },
   {
     title: "创建时间",
