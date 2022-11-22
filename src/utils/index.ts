@@ -4,7 +4,7 @@ import { columnItem } from "../types/index";
 /*
  * @Author: yangliwei 1280426581@qq.com
  * @Date: 2022-09-27 13:55:41
- * @LastEditTime: 2022-11-22 12:00:07
+ * @LastEditTime: 2022-11-22 14:33:46
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\utils\index.ts
  * Copyright (c) 2022 by yangliwei 1280426581@qq.com, All Rights Reserved. 
@@ -82,6 +82,14 @@ export const FindTextFromData = (
  */
 export const Copy = (text: string) => {
   return navigator.clipboard.writeText(text);
+};
+
+// 筛选出在searchBar中的columns
+export const FilterSearchBarColumns = (columns?: columnItem[]) => {
+  if (columns) {
+    return columns.filter((item) => (!item.notShowInTable || !item.notShowInSearch));
+  }
+  return [];
 };
 
 // 筛选出需要在列选项中显示的列

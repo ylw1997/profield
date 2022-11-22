@@ -1,7 +1,7 @@
 /*
  * @Author: YangLiwei
  * @Date: 2022-06-27 10:13:31
- * @LastEditTime: 2022-11-22 10:49:03
+ * @LastEditTime: 2022-11-22 14:34:21
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\components\proTable.tsx
  * @Description: 表格封装
@@ -28,7 +28,7 @@ import { SizeType } from "ant-design-vue/es/config-provider";
 import { MenuClickEventHandler } from "ant-design-vue/lib/menu/src/interface";
 import useTable from "../hooks/useTable";
 import { columnItem } from "../types";
-import { TableColumns, TableColumnSelected } from "../utils/index";
+import { TableColumns, TableColumnSelected, FilterSearchBarColumns } from "../utils/index";
 import { DefaultRecordType } from "ant-design-vue/es/vc-table/interface";
 import ColumnPicker from "./ColumnPicker";
 export default defineComponent({
@@ -153,7 +153,7 @@ export default defineComponent({
             style={{
               margin: "5px 0"
             }}
-            column={TableColumns(props.columns)}
+            column={FilterSearchBarColumns(props.columns)}
             onSearch={(val: object) => emit("search", val)}
             onReset={(val: string) => emit("reset", val)}
             onChangeData={(val: object) => {

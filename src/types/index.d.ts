@@ -1,7 +1,7 @@
 /*
  * @Author: yangliwei 1280426581@qq.com
  * @Date: 2022-09-26 14:25:58
- * @LastEditTime: 2022-11-22 13:35:32
+ * @LastEditTime: 2022-11-22 14:31:06
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\types\index.d.ts
  * Copyright (c) 2022 by yangliwei 1280426581@qq.com, All Rights Reserved. 

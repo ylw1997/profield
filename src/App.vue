@@ -1,7 +1,7 @@
 <!--
  * @Author: yangliwei 1280426581@qq.com
  * @Date: 2022-09-26 14:10:44
- * @LastEditTime: 2022-11-22 13:46:48
+ * @LastEditTime: 2022-11-22 14:35:53
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\App.vue
  * Copyright (c) 2022 by yangliwei 1280426581@qq.com, All Rights Reserved. 
@@ -94,6 +94,8 @@ const columns = ref<columnItem[]>([
     showField: "showRemark",
     dataIndex: "remark",
     searchRangeField:["remarkStart","remarkEnd"],
+    notShowInTable: true,
+    notShowInSearch:false
   },
   {
     title: "创建时间",
