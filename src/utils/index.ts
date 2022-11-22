@@ -4,7 +4,7 @@ import { columnItem } from "../types/index";
 /*
  * @Author: yangliwei 1280426581@qq.com
  * @Date: 2022-09-27 13:55:41
- * @LastEditTime: 2022-11-22 15:58:00
+ * @LastEditTime: 2022-11-22 17:26:29
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\utils\index.ts
  * Copyright (c) 2022 by yangliwei 1280426581@qq.com, All Rights Reserved. 
@@ -108,6 +108,14 @@ export const TableColumnSelected = (columns?: any[], selectedKeys?: string[], wi
       dataIndex: item.showField ? item.showField : item.dataIndex
     }));
     return newColumns;
+  }
+  return [];
+};
+
+// 筛选出在searchBar中的columns
+export const FilterSearchBarColumns = (columns?: columnItem[]) => {
+  if (columns) {
+    return columns.filter((item) => (!item.notShowInTable || !item.notShowInSearch));
   }
   return [];
 };

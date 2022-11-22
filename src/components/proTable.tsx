@@ -1,7 +1,7 @@
 /*
  * @Author: YangLiwei
  * @Date: 2022-06-27 10:13:31
- * @LastEditTime: 2022-11-22 16:48:12
+ * @LastEditTime: 2022-11-22 17:33:07
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\components\proTable.tsx
  * @Description: 表格封装
@@ -28,7 +28,7 @@ import { SizeType } from "ant-design-vue/es/config-provider";
 import { MenuClickEventHandler } from "ant-design-vue/lib/menu/src/interface";
 import useTable from "../hooks/useTable";
 import { columnItem } from "../types";
-import { TableColumns, TableColumnSelected } from "../utils/index";
+import { TableColumns, TableColumnSelected, FilterSearchBarColumns } from "../utils/index";
 import { DefaultRecordType } from "ant-design-vue/es/vc-table/interface";
 import ColumnPicker from "./ColumnPicker";
 export default defineComponent({
@@ -113,7 +113,8 @@ export default defineComponent({
     "reset",
   ],
   setup(props, { slots, emit, attrs }) {
-    const sourceColumns = ref<columnItem[]>(TableColumns(toRaw(props.columns)));
+    const columnsRaw = toRaw(props.columns);
+    const sourceColumns = ref<columnItem[]>(TableColumns(props.columns));
     const { onSelectChange, handleTableChange, SelectedRowKeys } =
       useTable(emit,props.selectType);
     const showSerach = ref(true);
@@ -153,7 +154,7 @@ export default defineComponent({
             style={{
               margin: "5px 0"
             }}
-            column={sourceColumns.value}
+            column={FilterSearchBarColumns(columnsRaw)}
             onSearch={(val: object) => emit("search", val)}
             onReset={(val: string) => emit("reset", val)}
             onChangeData={(val: object) => {
