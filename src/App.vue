@@ -94,7 +94,7 @@ const columns = ref<columnItem[]>([
     showField: "showRemark",
     dataIndex: "remark",
     searchRangeField:["remarkStart","remarkEnd"],
-    serachFold:true,
+    searchFold:true,
   },
   {
     title: "创建时间",

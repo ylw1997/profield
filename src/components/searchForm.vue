@@ -78,11 +78,11 @@ const isFold = ref(true);
 
 const columnFilter = computed(() => {
   const carr = props.column ? props.column : [];
-  return isFold.value ? carr.filter(item => !item.serachFold) : carr;
+  return isFold.value ? carr.filter(item => !item.searchFold) : carr;
 });
 
 const showProSearch = computed(() => {
-  return props.column?props.column.some(item => item.serachFold):false;
+  return props.column?props.column.some(item => item.searchFold):false;
 });
 
 const emit = defineEmits(["search", "reset", "changeData"]);
