@@ -1,7 +1,7 @@
 /*
  * @Author: YangLiwei
  * @Date: 2022-06-27 10:13:31
- * @LastEditTime: 2022-11-22 17:33:07
+ * @LastEditTime: 2022-11-22 17:49:07
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\components\proTable.tsx
  * @Description: 表格封装
@@ -113,7 +113,7 @@ export default defineComponent({
     "reset",
   ],
   setup(props, { slots, emit, attrs }) {
-    const columnsRaw = toRaw(props.columns);
+    const columnsRaw = ref(FilterSearchBarColumns(props.columns));
     const sourceColumns = ref<columnItem[]>(TableColumns(props.columns));
     const { onSelectChange, handleTableChange, SelectedRowKeys } =
       useTable(emit,props.selectType);
@@ -154,7 +154,7 @@ export default defineComponent({
             style={{
               margin: "5px 0"
             }}
-            column={FilterSearchBarColumns(columnsRaw)}
+            column={columnsRaw.value}
             onSearch={(val: object) => emit("search", val)}
             onReset={(val: string) => emit("reset", val)}
             onChangeData={(val: object) => {
