@@ -1,7 +1,7 @@
 /*
  * @Author: YangLiwei
  * @Date: 2022-06-27 10:13:31
- * @LastEditTime: 2022-11-15 15:33:49
+ * @LastEditTime: 2022-11-22 10:29:03
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\components\proTable.tsx
  * @Description: 表格封装
@@ -97,7 +97,11 @@ export default defineComponent({
     selectType:{
       type:String,
       default:()=> "checkbox"
-    } as Prop<"checkbox" | "radio">
+    } as Prop<"checkbox" | "radio">,
+    defaultFieldWidth:{
+      type:Number,
+      default:()=> 100
+    } as Prop<number>,
   },
   emits: [
     "update:rowskeys",
@@ -244,7 +248,7 @@ export default defineComponent({
             {...props}
             {...attrs}
             size={TableSize.value}
-            columns={TableColumnSelected(props.columns, props.defaultColumnSelected)}
+            columns={TableColumnSelected(props.columns, props.defaultColumnSelected,props.defaultFieldWidth)}
             onChange={handleTableChange}
             row-selection={
               props.rowskeys
@@ -268,7 +272,7 @@ export default defineComponent({
             {...props}
             {...attrs}
             size={TableSize.value}
-            columns={TableColumnSelected(props.columns, props.defaultColumnSelected)}
+            columns={TableColumnSelected(props.columns, props.defaultColumnSelected,props.defaultFieldWidth)}
             onChange={handleTableChange}
             row-selection={
               props.rowskeys
