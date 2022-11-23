@@ -1,7 +1,7 @@
 <!--
  * @Author: yangliwei 1280426581@qq.com
  * @Date: 2022-09-26 14:10:44
- * @LastEditTime: 2022-11-22 17:30:34
+ * @LastEditTime: 2022-11-23 08:53:58
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\App.vue
  * Copyright (c) 2022 by yangliwei 1280426581@qq.com, All Rights Reserved. 
@@ -111,6 +111,7 @@ const columns = ref<columnItem[]>([
     type: "select",
     options: [],
     notShowInAddOrEdit: true,
+    searchRangeField:["remarkStart","remarkEnd"],
   },
   {
     title: "操作",

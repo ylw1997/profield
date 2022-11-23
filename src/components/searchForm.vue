@@ -1,7 +1,7 @@
 <!--
  * @Author: YangLiwei
  * @Date: 2021-05-16 13:26:30
- * @LastEditTime: 2022-11-22 17:36:21
+ * @LastEditTime: 2022-11-23 09:05:35
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\components\searchForm.vue
  * @Description: 
@@ -17,11 +17,11 @@
             <ProField v-model:value="formModel[item.dataIndex]" v-bind="item" />
           </FormItem>
           <FormItem v-else :label="item.title">
-            <Space>
+            <div style="display: flex;align-items: center;" >
               <ProField v-model:value="formModel[item.searchRangeField[0]]" v-bind="item" />
-              -
+              <span style="margin:0 8px">-</span>
               <ProField v-model:value="formModel[item.searchRangeField[1]]" v-bind="item" />
-            </Space>
+            </div>
           </FormItem>
           </Col>
         </template>
