@@ -1,7 +1,7 @@
 <!--
  * @Author: YangLiwei
  * @Date: 2021-05-16 13:26:30
- * @LastEditTime: 2022-11-23 09:05:35
+ * @LastEditTime: 2022-11-29 15:50:59
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\components\searchForm.vue
  * @Description: 
@@ -72,6 +72,10 @@ const props = defineProps({
     type: Number,
     default: () => 6,
   },
+  initFormData: {
+    type: Object,
+    default: () => ({}),
+  },
 });
 
 const isFold = ref(true);
@@ -90,7 +94,8 @@ const emit = defineEmits(["search", "reset", "changeData"]);
 const { formref, formModel, reset, search } = useForm(
   emit,
   props,
-  props.column
+  props.column,
+  props.initFormData
 );
 watch(
   formModel,

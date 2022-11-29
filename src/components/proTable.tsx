@@ -1,7 +1,7 @@
 /*
  * @Author: YangLiwei
  * @Date: 2022-06-27 10:13:31
- * @LastEditTime: 2022-11-22 17:49:07
+ * @LastEditTime: 2022-11-29 15:57:41
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\components\proTable.tsx
  * @Description: 表格封装
@@ -102,6 +102,10 @@ export default defineComponent({
       type:Number,
       default:()=> 100
     } as Prop<number>,
+    defaultSearchData:{
+      type:Object,
+      default:()=> ({})
+    }
   },
   emits: [
     "update:rowskeys",
@@ -161,6 +165,7 @@ export default defineComponent({
               SearchFormData.value = val;
               emit("formDataChange", val);
             }}
+            initFormData={props.defaultSearchData}
             v-slots={{
               default: slots.searchForm,
             }}

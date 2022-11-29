@@ -1,7 +1,7 @@
 <!--
  * @Author: yangliwei 1280426581@qq.com
  * @Date: 2022-09-26 14:10:44
- * @LastEditTime: 2022-11-23 08:53:58
+ * @LastEditTime: 2022-11-29 15:58:14
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\App.vue
  * Copyright (c) 2022 by yangliwei 1280426581@qq.com, All Rights Reserved. 
@@ -14,7 +14,11 @@
       :pagination="false"
       select-type="radio" 
       :scroll="{ x: 1000}"
-      @changeData="search" >
+      @changeData="search"
+      @search="search"
+      :default-search-data="{
+        tel:'123123123'
+      }" >
       <template #actionLeft>
         <Button @click="addFunc" type="primary">新增规格</Button>
         <Button type="primary" @click="clearRowsKeys">清空选择</Button>

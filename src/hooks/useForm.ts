@@ -1,7 +1,7 @@
 /*
  * @Author: YangLiwei
  * @Date: 2021-01-14 18:07:03
- * @LastEditTime: 2022-10-08 10:15:18
+ * @LastEditTime: 2022-11-29 15:51:13
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\hooks\useForm.ts
  * @Description:formhook
@@ -16,9 +16,9 @@ import { convertFormDataToData } from "../utils/form";
  * @param emit
  * @returns
  */
-const useForm = (emit?: any, props?: any, columns?: columnItem[]) => {
+const useForm = (emit?: any, props?: any, columns?: columnItem[],initData?:object) => {
   const formref = ref();
-  const formModel = ref<{ [string: string]: any }>({});
+  const formModel = ref<{ [string: string]: any }>({...initData});
   //关闭
   const cancel = () => {
     if (emit) {
@@ -29,8 +29,8 @@ const useForm = (emit?: any, props?: any, columns?: columnItem[]) => {
   };
     //重置
   const reset = () => {
-    formModel.value = {};
-    if (emit) emit("reset", {});
+    formModel.value = {...initData};
+    if (emit) emit("reset", {...initData});
   };
     //查询
   const search = () => {
