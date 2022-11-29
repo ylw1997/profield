@@ -1,12 +1,12 @@
 /*
  * @Author: YangLiwei
  * @Date: 2022-06-27 10:13:31
- * @LastEditTime: 2022-11-29 15:57:41
+ * @LastEditTime: 2022-11-29 16:53:26
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\components\proTable.tsx
  * @Description: 表格封装
  */
-import { defineComponent, ref, Prop, computed, watchEffect, toRaw } from "vue";
+import { defineComponent, ref, Prop, computed, watchEffect } from "vue";
 import tableAction from "./tableAction";
 import SearchForm from "./searchForm.vue";
 import {
