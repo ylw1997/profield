@@ -1,7 +1,7 @@
 /*
  * @Author: YangLiwei
  * @Date: 2022-07-11 10:36:59
- * @LastEditTime: 2022-11-14 09:26:27
+ * @LastEditTime: 2022-11-30 09:40:50
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\utils\form.ts
  * @Description: 表单数据处理
@@ -135,9 +135,27 @@ export const convertFormDataToData = (
       }
 
       if (
-        (item.type == "date" ||
-          item.type == "dateTime" ||
-          item.type == "time") &&
+        (item.type == "date" ) &&
+        dataobj[item.dataIndex]
+      ) {
+        dataobj[item.dataIndex] = timeFormat(
+          dataobj[item.dataIndex],
+          "YYYY-MM-DD"
+        );
+      }
+
+      if (
+        (item.type == "time" ) &&
+        dataobj[item.dataIndex]
+      ) {
+        dataobj[item.dataIndex] = timeFormat(
+          dataobj[item.dataIndex],
+          "HH:mm:ss"
+        );
+      }
+
+      if (
+        (item.type == "dateTime" ) &&
         dataobj[item.dataIndex]
       ) {
         dataobj[item.dataIndex] = timeFormat(

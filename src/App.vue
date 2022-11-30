@@ -1,7 +1,7 @@
 <!--
  * @Author: yangliwei 1280426581@qq.com
  * @Date: 2022-09-26 14:10:44
- * @LastEditTime: 2022-11-29 15:58:14
+ * @LastEditTime: 2022-11-29 17:16:38
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\App.vue
  * Copyright (c) 2022 by yangliwei 1280426581@qq.com, All Rights Reserved. 
@@ -77,6 +77,10 @@ const columns = ref<columnItem[]>([
     dataIndex: "tel",
     ValidateType:"any",
     required: true,
+    disabledFunc:(FormData:any)=>{
+      console.log(FormData)
+      return false;
+    }
   },
   {
     title:"上传",
