@@ -1,7 +1,7 @@
 <!--
  * @Author: yangliwei 1280426581@qq.com
  * @Date: 2022-09-26 14:10:44
- * @LastEditTime: 2022-11-29 17:16:38
+ * @LastEditTime: 2022-11-30 16:50:00
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\App.vue
  * Copyright (c) 2022 by yangliwei 1280426581@qq.com, All Rights Reserved. 
@@ -10,18 +10,15 @@
 
 <template>
   <div>
-    <proTable  v-model:columns="columns" v-model:rowskeys="rowskeys" row-key="id" :dataSource="dataSource"
-      :pagination="false"
-      select-type="radio" 
-      :scroll="{ x: 1000}"
-      @changeData="search"
-      @search="search"
+    <proTable v-model:columns="columns" v-model:rowskeys="rowskeys" row-key="id" :dataSource="dataSource"
+      :pagination="false" select-type="radio" :scroll="{ x: 1000 }" @changeData="search" @search="search"
       :default-search-data="{
-        tel:'123123123'
-      }" >
+        tel: '123123123'
+      }" v-model:default-column-selected="defaultColumn">
       <template #actionLeft>
         <Button @click="addFunc" type="primary">新增规格</Button>
         <Button type="primary" @click="clearRowsKeys">清空选择</Button>
+        <Button type="primary" @click="changeColumn">改变字段</Button>
       </template>
       <template #bodyCell="{ column, record }">
         <template v-if="column.dataIndex == 'action'">
@@ -57,14 +54,21 @@ const search = (data: any) => {
   console.log(data)
 }
 
+const defaultColumn = ref<string[]|undefined>(undefined)
+
+const changeColumn = () => {
+  defaultColumn.value = ["resellerName", "tel"]
+}
+
 const columns = ref<columnItem[]>([
   {
     title: "分销商id",
     dataIndex: "id",
     notShowInAddOrEdit: true,
     notShowInSearch: true,
+    notShowInTable: true,
   },
-  { title: "分销商名称", dataIndex: "resellerName", required: true, ValidateType:"any",isArray:true },
+  { title: "分销商名称", dataIndex: "resellerName", required: true, ValidateType: "any", isArray: true },
   {
     title: "appId",
     dataIndex: "appId",
@@ -75,34 +79,34 @@ const columns = ref<columnItem[]>([
   {
     title: "联系人电话",
     dataIndex: "tel",
-    ValidateType:"any",
+    ValidateType: "any",
     required: true,
-    disabledFunc:(FormData:any)=>{
+    disabledFunc: (FormData: any) => {
       console.log(FormData)
       return false;
     }
   },
   {
-    title:"上传",
-    dataIndex:"upload",
-    type:"YUpload",
-    notShowInSearch:true,
+    title: "上传",
+    dataIndex: "upload",
+    type: "YUpload",
+    notShowInSearch: true,
     listType: "picture-card",
-    onChangeValue:(_,data)=>{
-      console.log(_,data)
+    onChangeValue: (_, data) => {
+      console.log(_, data)
     },
     onPreview: (value: any) => {
       console.log(value);
     },
-    tips:"123",
+    tips: "123",
     width: 100,
   },
   {
     title: "备注",
     showField: "showRemark",
     dataIndex: "remark",
-    searchRangeField:["remarkStart","remarkEnd"],
-    searchFold:true,
+    searchRangeField: ["remarkStart", "remarkEnd"],
+    searchFold: true,
     notShowInSearch: false,
     notShowInTable: true,
   },
@@ -119,7 +123,7 @@ const columns = ref<columnItem[]>([
     type: "select",
     options: [],
     notShowInAddOrEdit: true,
-    searchRangeField:["remarkStart","remarkEnd"],
+    searchRangeField: ["remarkStart", "remarkEnd"],
   },
   {
     title: "操作",
@@ -147,7 +151,7 @@ const dataSource = ref([
     showRemark: "备注",
     creationTime: "2021-09-26 14:10:44",
     enabledFlag: "1",
-    upload:"https://aloha-qa.walmartmobile.cn/esb/object/commonImage/showImageByTemplate/NWQ1OWQwYzUtN2NiYi00YzE2LThjZTktNDM1YWFhMzc3NDZhXzQzNzQyMDIwMDYwODEzNTgzMDgyOS5qcGc="
+    upload: "https://aloha-qa.walmartmobile.cn/esb/object/commonImage/showImageByTemplate/NWQ1OWQwYzUtN2NiYi00YzE2LThjZTktNDM1YWFhMzc3NDZhXzQzNzQyMDIwMDYwODEzNTgzMDgyOS5qcGc="
   },
   {
     key: "2",
@@ -162,7 +166,7 @@ const dataSource = ref([
 ])
 
 
-const { visible, modelData, add, edit,look } = useModel(columns.value as any);
+const { visible, modelData, add, edit, look } = useModel(columns.value as any);
 
 const ModelOk = (data: any) => {
   console.log(data)
@@ -172,7 +176,7 @@ const clearRowsKeys = () => {
   rowskeys.value = []
 }
 
-const addFunc = ()=>{
+const addFunc = () => {
   add()
 }
 

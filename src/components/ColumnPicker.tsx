@@ -1,14 +1,14 @@
 /*
  * @Author: yangliwei 1280426581@qq.com
  * @Date: 2022-10-18 10:32:43
- * @LastEditTime: 2022-10-20 14:05:08
+ * @LastEditTime: 2022-11-30 16:41:38
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\components\ColumnPicker.tsx
  * Copyright (c) 2022 by yangliwei 1280426581@qq.com, All Rights Reserved. 
  * @Description: 
  */
 import { Button, Popover, Space } from "ant-design-vue";
-import { defineComponent, Prop, ref, computed } from 'vue';
+import { defineComponent, Prop, ref, computed, watchEffect } from 'vue';
 import { columnItem } from "../types";
 import { FunnelPlotOutlined, VerticalAlignTopOutlined, VerticalAlignBottomOutlined } from "@ant-design/icons-vue"
 import { Transfer } from "ant-design-vue"
@@ -39,7 +39,9 @@ export default defineComponent({
     }) : []);
 
     const selectKeys = ref([]);
-    const targetKeys = ref(props.defaultSelected)
+    const targetKeys = ref<string[]|undefined>([])
+
+    watchEffect(()=>targetKeys.value = props.defaultSelected)
 
     // 选择改变
     const change = (targetKeys: string[]) => {

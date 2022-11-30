@@ -4,7 +4,7 @@ import { columnItem } from "../types/index";
 /*
  * @Author: yangliwei 1280426581@qq.com
  * @Date: 2022-09-27 13:55:41
- * @LastEditTime: 2022-11-22 17:26:29
+ * @LastEditTime: 2022-11-30 16:25:34
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\utils\index.ts
  * Copyright (c) 2022 by yangliwei 1280426581@qq.com, All Rights Reserved. 
@@ -97,7 +97,7 @@ export const TableColumnSelected = (columns?: any[], selectedKeys?: string[], wi
   let columnList = [];
   if (columns && columns.length > 0) {
     if (selectedKeys && selectedKeys.length > 0) {
-      columnList = columns.filter((item) => selectedKeys.includes(item.dataIndex));
+      columnList = columns.filter((item) => (selectedKeys.includes(item.dataIndex) && !item.notShowInTable));
     } else {
       columnList = TableColumns(columns);
     }
