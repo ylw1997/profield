@@ -1,7 +1,7 @@
 <!--
  * @Author: YangLiwei
  * @Date: 2021-03-30 11:30:01
- * @LastEditTime: 2022-11-22 13:05:08
+ * @LastEditTime: 2022-12-01 20:03:13
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\components\proForm.vue
  * @Description: 
@@ -21,11 +21,14 @@
     <Form ref="formref" layout="vertical" :model="formModel">
       <Row :gutter="16">
         <template v-for="item in columns" :key="item.dataIndex">
-          <!-- 如果不显示或者满足条件的才显示 -->
+          <!-- 如果不显示或者满足条件的才显示 
+          &&
+              (formModel.ylwType == 'look' && (item.showField?formModel[item.showField]:formModel[item.dataIndex]))
+          -->
           <Col
             v-if="
               !item.notShowInAddOrEdit &&
-              (item.condition ? item.condition(formModel) : true)
+              (item.condition ? item.condition(formModel) : true) 
             "
             :span="item.span ? item.span : colSpan"
           >
@@ -35,9 +38,9 @@
               :rules="makeRule(item)"
             >
               <lookField
-                :value="formModel[item.dataIndex]"
-                v-bind="item"
                 v-if="formModel.ylwType == 'look'"
+                :value="(item.showField?formModel[item.showField]:formModel[item.dataIndex])"
+                v-bind="(item.showField || !(item.showField?formModel[item.showField]:formModel[item.dataIndex]))?undefined:item"
               />
               <!-- 如果有插槽 -->
               <template v-else-if="item.slot">
@@ -92,7 +95,7 @@
                   }
                 "
               />
-              <span v-if="item.tips" v-html="item.tips" style="color:#878787; margin-top: 5px; display: inline-block;" ></span>
+              <span v-if="item.tips && formModel.ylwType != 'look'" v-html="item.tips" style="color:#878787; margin-top: 5px; display: inline-block;" ></span>
             </FormItem>
           </Col>
         </template>

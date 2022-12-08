@@ -1,13 +1,13 @@
 /*
  * @Author: YangLiwei
  * @Date: 2022-06-29 17:21:34
- * @LastEditTime: 2022-10-27 11:05:12
+ * @LastEditTime: 2022-12-02 11:20:28
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\components\lookField.tsx
  * @Description:
  */
 import { defineComponent, Prop } from "vue";
-import { message } from "ant-design-vue";
+import { message, Space } from "ant-design-vue";
 import { CopyOutlined } from "@ant-design/icons-vue";
 import { ColumnsTypes, DefaultOptionType } from "../types";
 import { Copy, FindTextFromData } from "../utils";
@@ -45,6 +45,7 @@ export default defineComponent({
         style={{
           cursor: "pointer",
           marginLeft: "5px",
+          color: "#1890ff",
         }}
         onClick={() => copy(prop.value)}
       />);
@@ -62,16 +63,24 @@ export default defineComponent({
         }
         return <span>{FindTextFromData(prop.options, (prop.value as string))} {copyEle()}</span>;
       case "YUpload":
-        return <img src={prop.value + ""} style={{
-          width: "80px",
-          height: "80px",
-          borderRadius: "2px",
-          display: "inline-block",
-        }} />;
+        return <Space>
+          {
+            (prop.value as string).split(",").map(element => {
+              return <img onClick={()=>window.open(element)} src={element} style={{
+                width: "80px",
+                height: "80px",
+                borderRadius: "2px",
+                display: "inline-block",
+                objectFit: "cover",
+                cursor: "pointer",
+              }} />;
+            })
+          }
+        </Space>;
       default:
         return <span style={{ wordBreak: "break-all" }}>
           {prop.value}
-          {copyEle()}
+          {prop.value?copyEle():"无数据"}
         </span>;
       }
     };

@@ -1,7 +1,7 @@
 <!--
  * @Author: yangliwei 1280426581@qq.com
  * @Date: 2022-09-26 14:10:44
- * @LastEditTime: 2022-11-30 16:50:00
+ * @LastEditTime: 2022-12-01 19:55:04
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\App.vue
  * Copyright (c) 2022 by yangliwei 1280426581@qq.com, All Rights Reserved. 
@@ -148,10 +148,10 @@ const dataSource = ref([
     resellerName: '["张三","李四"]',
     appId: "123",
     tel: "123456789",
-    showRemark: "备注",
+    // showRemark: "备注",
     creationTime: "2021-09-26 14:10:44",
     enabledFlag: "1",
-    upload: "https://aloha-qa.walmartmobile.cn/esb/object/commonImage/showImageByTemplate/NWQ1OWQwYzUtN2NiYi00YzE2LThjZTktNDM1YWFhMzc3NDZhXzQzNzQyMDIwMDYwODEzNTgzMDgyOS5qcGc="
+    upload: "https://oss.qmsznj.com/test/2022/12/01/842768d9-0200-413b-86d5-c32cb180ea66_20221201195315A003.jpg,https://oss.qmsznj.com/test/2022/12/01/c2bf89fd-216f-4a7b-8603-669db1cd847f_20221201195315A002.jpg"
   },
   {
     key: "2",
