@@ -1,7 +1,7 @@
 <!--
  * @Author: YangLiwei
  * @Date: 2021-03-30 11:30:01
- * @LastEditTime: 2022-12-01 20:03:13
+ * @LastEditTime: 2022-12-08 17:05:49
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\components\proForm.vue
  * @Description: 
@@ -171,7 +171,7 @@ const props = defineProps({
     default: () => false,
   },
 });
-const emit = defineEmits(["update:visible", "update:data", "ok"]);
+const emit = defineEmits(["update:visible", "ok","changeData","cancel"]);
 
 
 const submitFunc = () => {

@@ -1,7 +1,7 @@
 <!--
  * @Author: yangliwei 1280426581@qq.com
  * @Date: 2022-09-26 14:10:44
- * @LastEditTime: 2022-12-01 19:55:04
+ * @LastEditTime: 2022-12-08 17:05:59
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\App.vue
  * Copyright (c) 2022 by yangliwei 1280426581@qq.com, All Rights Reserved. 
@@ -33,8 +33,11 @@
         </Space>
       </template>
     </proTable>
-    <proForm :width="1000" title="商品管理" v-model:visible="visible" v-model:data="modelData" @ok="ModelOk"
-      :columns="columns">
+    <proForm :width="1000" title="商品管理" v-model:visible="visible" :data="modelData" 
+      @ok="ModelOk"
+      :columns="columns"
+      @change-data="changeData"
+      >
     </proForm>
   </div>
 </template>
@@ -42,7 +45,7 @@
 <script setup lang="ts">
 import { timeFormat, useModel } from "./index"
 import { columnItem } from "./index"
-import { ref } from 'vue';
+import { ref, watchEffect } from 'vue';
 import proTable from "./components/proTable"
 import { Button, Space } from "ant-design-vue"
 import proForm from "./components/proForm.vue"
@@ -79,12 +82,12 @@ const columns = ref<columnItem[]>([
   {
     title: "联系人电话",
     dataIndex: "tel",
-    ValidateType: "any",
+    
     required: true,
-    disabledFunc: (FormData: any) => {
-      console.log(FormData)
-      return false;
-    }
+    // disabledFunc: (FormData: any) => {
+    //   console.log(FormData)
+    //   return false;
+    // }
   },
   {
     title: "上传",
@@ -167,6 +170,13 @@ const dataSource = ref([
 
 
 const { visible, modelData, add, edit, look } = useModel(columns.value as any);
+
+const data = ref()
+
+const changeData = (val:any)=>{
+  console.log("changeData",val)
+  data.value = val
+}
 
 const ModelOk = (data: any) => {
   console.log(data)

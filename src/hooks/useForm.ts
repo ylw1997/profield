@@ -1,12 +1,12 @@
 /*
  * @Author: YangLiwei
  * @Date: 2021-01-14 18:07:03
- * @LastEditTime: 2022-11-29 16:53:15
+ * @LastEditTime: 2022-12-08 17:05:41
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: \vite-npm\src\hooks\useForm.ts
  * @Description:formhook
  */
-import { ref, watchEffect } from "vue";
+import { ref, watchEffect, watch } from "vue";
 import { ValidateItemType } from "../utils/index";
 import { columnItem, RuleObject } from "../types";
 import { convertFormDataToData } from "../utils/form";
@@ -23,8 +23,8 @@ const useForm = (emit?: any, props?: any, columns?: columnItem[],initData?:objec
   const cancel = () => {
     if (emit) {
       formref.value?.resetFields();
-      if (props.data) emit("update:data", {});
       emit("update:visible", false);
+      emit("cancel");
     }
   };
     //重置
@@ -76,6 +76,12 @@ const useForm = (emit?: any, props?: any, columns?: columnItem[],initData?:objec
       }
     });
   }
+
+  watch(formModel,(val)=>{
+    emit?.("changeData",val);
+  },{
+    deep:true
+  });
 
   return {
     cancel,
