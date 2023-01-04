@@ -1,9 +1,9 @@
 /*
  * @Author: YangLiwei
  * @Date: 2022-06-27 10:13:31
- * @LastEditTime: 2022-11-30 16:49:33
+ * @LastEditTime: 2023-01-04 16:40:47
  * @LastEditors: yangliwei 1280426581@qq.com
- * @FilePath: \vite-npm\src\components\proTable.tsx
+ * @FilePath: /profield/src/components/proTable.tsx
  * @Description: 表格封装
  */
 import { defineComponent, ref, Prop, computed, watchEffect } from "vue";
@@ -105,6 +105,10 @@ export default defineComponent({
     defaultSearchData:{
       type:Object,
       default:()=> ({})
+    },
+    getCheckboxProps:{
+      type:Function,
+      default:()=>undefined
     }
   },
   emits: [
@@ -263,6 +267,7 @@ export default defineComponent({
                   onChange: (selectedRowKeys: Array<number | string>) =>
                     onSelectChange(selectedRowKeys, props.pagination),
                   type: props.selectType,
+                  getCheckboxProps:props.getCheckboxProps
                 }
                 : null
             }

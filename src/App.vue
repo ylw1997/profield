@@ -1,9 +1,9 @@
 <!--
  * @Author: yangliwei 1280426581@qq.com
  * @Date: 2022-09-26 14:10:44
- * @LastEditTime: 2022-12-08 17:05:59
+ * @LastEditTime: 2023-01-04 16:42:15
  * @LastEditors: yangliwei 1280426581@qq.com
- * @FilePath: \vite-npm\src\App.vue
+ * @FilePath: /profield/src/App.vue
  * Copyright (c) 2022 by yangliwei 1280426581@qq.com, All Rights Reserved. 
  * @Description: 
 -->
@@ -11,7 +11,9 @@
 <template>
   <div>
     <proTable v-model:columns="columns" v-model:rowskeys="rowskeys" row-key="id" :dataSource="dataSource"
-      :pagination="false" select-type="radio" :scroll="{ x: 1000 }" @changeData="search" @search="search"
+      :pagination="false" select-type="radio" :scroll="{ x: 1000 }" 
+      :getCheckboxProps="getCheckboxProps"
+      @changeData="search" @search="search"
       :default-search-data="{
         tel: '123123123'
       }" v-model:default-column-selected="defaultColumn">
@@ -52,6 +54,12 @@ import proForm from "./components/proForm.vue"
 // import YUpload from "./components/YUpload"
 
 const rowskeys = ref([])
+
+const getCheckboxProps = (record:any)=>{
+  return {
+    disabled: record.appId ==="123"
+  }
+}
 
 const search = (data: any) => {
   console.log(data)
@@ -160,7 +168,7 @@ const dataSource = ref([
     key: "2",
     id: "2",
     resellerName: '["张三"]',
-    appId: "123",
+    appId: "1232",
     tel: "123456789",
     showRemark: "备注",
     creationTime: "2021-09-26 14:10:44",
