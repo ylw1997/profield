@@ -1,9 +1,9 @@
 /*
  * @Author: yangliwei 1280426581@qq.com
  * @Date: 2022-10-18 10:32:43
- * @LastEditTime: 2022-11-30 16:41:38
+ * @LastEditTime: 2023-01-04 16:43:27
  * @LastEditors: yangliwei 1280426581@qq.com
- * @FilePath: \vite-npm\src\components\ColumnPicker.tsx
+ * @FilePath: /profield/src/components/ColumnPicker.tsx
  * Copyright (c) 2022 by yangliwei 1280426581@qq.com, All Rights Reserved. 
  * @Description: 
  */
@@ -92,7 +92,7 @@ export default defineComponent({
             content: () => (
               <Transfer
                 dataSource={transferData.value}
-                render={item => (
+                render={(item: any) => (
                   <div style={{
                     display: "flex",
                     justifyContent: "space-between",
