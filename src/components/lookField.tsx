@@ -1,13 +1,13 @@
 /*
  * @Author: YangLiwei
  * @Date: 2022-06-29 17:21:34
- * @LastEditTime: 2022-12-02 11:20:28
+ * @LastEditTime: 2023-01-06 17:22:30
  * @LastEditors: yangliwei 1280426581@qq.com
- * @FilePath: \vite-npm\src\components\lookField.tsx
+ * @FilePath: /profield/src/components/lookField.tsx
  * @Description:
  */
 import { defineComponent, Prop } from "vue";
-import { message, Space } from "ant-design-vue";
+import { Image, message, Space } from "ant-design-vue";
 import { CopyOutlined } from "@ant-design/icons-vue";
 import { ColumnsTypes, DefaultOptionType } from "../types";
 import { Copy, FindTextFromData } from "../utils";
@@ -66,13 +66,10 @@ export default defineComponent({
         return <Space>
           {
             (prop.value as string).split(",").map(element => {
-              return <img onClick={()=>window.open(element)} src={element} style={{
+              return <Image src={element} style={{
                 width: "80px",
                 height: "80px",
-                borderRadius: "2px",
-                display: "inline-block",
                 objectFit: "cover",
-                cursor: "pointer",
               }} />;
             })
           }
