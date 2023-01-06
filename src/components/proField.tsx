@@ -1,7 +1,7 @@
 /*
  * @Author: YangLiwei
  * @Date: 2021-05-16 14:56:37
- * @LastEditTime: 2023-01-06 11:15:26
+ * @LastEditTime: 2023-01-06 17:59:27
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: /profield/src/components/proField.tsx
  * @Description:原子组件
@@ -51,9 +51,9 @@ const ProField = defineComponent({
             placeholder={"请输入" + prop.title}
             min={0.001}
             step={0.001}
-            // formatter={(value) =>
-            //   `${value}`.replace(/^(\\-)*(\d+)\.(\d\d\d).*$/, "$1$2.$3")
-            // }
+            formatter={(value) =>
+              `${value}`.replace(/^(\\-)*(\d+)\.(\d\d\d).*$/, "$1$2.$3")
+            }
           />
         );
 
