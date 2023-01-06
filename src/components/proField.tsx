@@ -1,9 +1,9 @@
 /*
  * @Author: YangLiwei
  * @Date: 2021-05-16 14:56:37
- * @LastEditTime: 2022-11-14 09:33:57
+ * @LastEditTime: 2023-01-06 11:15:26
  * @LastEditors: yangliwei 1280426581@qq.com
- * @FilePath: \vite-npm\src\components\proField.tsx
+ * @FilePath: /profield/src/components/proField.tsx
  * @Description:原子组件
  */
 
@@ -49,11 +49,11 @@ const ProField = defineComponent({
         return (
           <InputNumber
             placeholder={"请输入" + prop.title}
-            min={0.01}
-            step={0.01}
-            formatter={(value) =>
-              `${value}`.replace(/^(\\-)*(\d+)\.(\d\d).*$/, "$1$2.$3")
-            }
+            min={0.001}
+            step={0.001}
+            // formatter={(value) =>
+            //   `${value}`.replace(/^(\\-)*(\d+)\.(\d\d\d).*$/, "$1$2.$3")
+            // }
           />
         );
 

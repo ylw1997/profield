@@ -1,7 +1,7 @@
 <!--
  * @Author: yangliwei 1280426581@qq.com
  * @Date: 2022-09-26 14:10:44
- * @LastEditTime: 2023-01-04 16:42:15
+ * @LastEditTime: 2023-01-06 11:12:41
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: /profield/src/App.vue
  * Copyright (c) 2022 by yangliwei 1280426581@qq.com, All Rights Reserved. 
@@ -90,7 +90,7 @@ const columns = ref<columnItem[]>([
   {
     title: "联系人电话",
     dataIndex: "tel",
-    
+    type:"money",
     required: true,
     // disabledFunc: (FormData: any) => {
     //   console.log(FormData)
