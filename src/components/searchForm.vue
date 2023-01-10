@@ -1,9 +1,9 @@
 <!--
  * @Author: YangLiwei
  * @Date: 2021-05-16 13:26:30
- * @LastEditTime: 2022-11-29 16:43:12
+ * @LastEditTime: 2023-01-10 10:35:30
  * @LastEditors: yangliwei 1280426581@qq.com
- * @FilePath: \vite-npm\src\components\searchForm.vue
+ * @FilePath: /profield/src/components/searchForm.vue
  * @Description: 
 -->
 <template>
@@ -12,34 +12,34 @@
       <Row :gutter="[24, 0]">
         <template v-for="item in columnFilter" :key="item.dataIndex">
           <Col v-if="!item.notShowInSearch" :span="colSpan">
-          <FormItem v-if="!item.searchRangeField" :label="item.title">
-            <!-- v-model会自动作为prop传入子组件最外层，v-bind 会把整个对象作为prop传入子组件-->
-            <ProField v-model:value="formModel[item.dataIndex]" v-bind="item" />
-          </FormItem>
-          <FormItem v-else :label="item.title">
-            <div style="display: flex;align-items: center;" >
-              <ProField v-model:value="formModel[item.searchRangeField[0]]" v-bind="item" />
-              <span style="margin:0 8px">-</span>
-              <ProField v-model:value="formModel[item.searchRangeField[1]]" v-bind="item" />
-            </div>
-          </FormItem>
+            <FormItem v-if="!item.searchRangeField" :label="item.title">
+              <!-- v-model会自动作为prop传入子组件最外层，v-bind 会把整个对象作为prop传入子组件-->
+              <ProField v-model:value.trim="formModel[item.dataIndex]" v-bind="item" />
+            </FormItem>
+            <FormItem v-else :label="item.title">
+              <div style="display: flex;align-items: center;" >
+                <ProField v-model:value="formModel[item.searchRangeField[0]]" v-bind="item" />
+                <span style="margin:0 8px">-</span>
+                <ProField v-model:value="formModel[item.searchRangeField[1]]" v-bind="item" />
+              </div>
+            </FormItem>
           </Col>
         </template>
         <!-- 作用域插槽 -->
         <Col v-if="slots" :span="colSpan">
-        <slot :formModel="formModel"></slot>
+          <slot :formModel="formModel"></slot>
         </Col>
         <Col :span="colSpan">
-        <FormItem>
-          <Space>
-            <Button :loading="loading" @click="search" type="primary">查询</Button>
-            <Button @click="reset" type="default">重置</Button>
-            <Button @click="isFold = !isFold" v-if="showProSearch" type="default"> 
-              <DownOutlined v-if="isFold"/>
-              <UpOutlined v-else />
-              高级搜索</Button>
-          </Space>
-        </FormItem>
+          <FormItem>
+            <Space>
+              <Button :loading="loading" @click="search" type="primary">查询</Button>
+              <Button @click="reset" type="default">重置</Button>
+              <Button @click="isFold = !isFold" v-if="showProSearch" type="default"> 
+                <DownOutlined v-if="isFold"/>
+                <UpOutlined v-else />
+                高级搜索</Button>
+            </Space>
+          </FormItem>
         </Col>
       </Row>
     </Form>
