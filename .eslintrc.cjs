@@ -21,21 +21,6 @@ module.exports = {
   ],
   "rules": {
     "@typescript-eslint/no-explicit-any": "off",
-    "indent": [
-      "error",
-      2
-    ],
-    "linebreak-style": [
-      "error",
-      "unix"
-    ],
-    "quotes": [
-      "error",
-      "double"
-    ],
-    "semi": [
-      "error",
-      "always"
-    ]
+    // "@typescript-eslint/no-non-null-assertion": "off"
   }
 };

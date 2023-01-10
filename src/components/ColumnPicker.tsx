@@ -1,7 +1,7 @@
 /*
  * @Author: yangliwei 1280426581@qq.com
  * @Date: 2022-10-18 10:32:43
- * @LastEditTime: 2023-01-04 16:43:27
+ * @LastEditTime: 2023-01-10 10:56:45
  * @LastEditors: yangliwei 1280426581@qq.com
  * @FilePath: /profield/src/components/ColumnPicker.tsx
  * Copyright (c) 2022 by yangliwei 1280426581@qq.com, All Rights Reserved. 
@@ -39,15 +39,15 @@ export default defineComponent({
     }) : []);
 
     const selectKeys = ref([]);
-    const targetKeys = ref<string[]|undefined>([])
+    const targetKeys = ref<string[] | undefined>([])
 
-    watchEffect(()=>targetKeys.value = props.defaultSelected)
+    watchEffect(() => targetKeys.value = props.defaultSelected)
 
     // 选择改变
     const change = (targetKeys: string[]) => {
       if (props.columns) {
         const columns = targetKeys.map((item) => {
-          return props.columns!.find((column) => column.dataIndex === item)
+          return props.columns?.find((column) => column.dataIndex === item)
         }).filter((item) => item != undefined);
         emit("change", { columns, targetKeys });
       }
@@ -72,6 +72,13 @@ export default defineComponent({
         change(targetKeys.value);
       }
     }
+
+    // 筛选
+    const filterOption = (inputValue: string, option: TransferItem) => {
+      return option.title?option.title.indexOf(inputValue) > -1:true
+    };
+
+
     return () => {
       return (
         <Popover
@@ -103,15 +110,15 @@ export default defineComponent({
                     {targetKeys.value && targetKeys.value.length > 1 && item.key && targetKeys.value.find(a => a === item.key) ?
                       <Space size={5} >
                         {
-                          targetKeys.value.findIndex((a) => a === item.key!) > 0 ?
-                            <Button onClick={(e) => move(item.key!, "up", e)} title="上移一行" size="small" type="link" >
+                          targetKeys.value.findIndex((a) => a === item.key) > 0 ?
+                            <Button onClick={(e) => move(item.key, "up", e)} title="上移一行" size="small" type="link" >
                               <VerticalAlignTopOutlined />
                             </Button>
                             : null
                         }
                         {
-                          targetKeys.value.findIndex((a) => a === item.key!) < targetKeys.value.length - 1 ?
-                            <Button onClick={(e) => move(item.key!, "down", e)} title="下移一行" size="small" type="link" >
+                          targetKeys.value.findIndex((a) => a === item.key) < targetKeys.value.length - 1 ?
+                            <Button onClick={(e) => move(item.key, "down", e)} title="下移一行" size="small" type="link" >
                               <VerticalAlignBottomOutlined />
                             </Button>
                             : null
@@ -126,6 +133,7 @@ export default defineComponent({
                   width: "250px",
                   height: "300px"
                 }}
+                filterOption={filterOption}
                 operations={['移入', '移出']}
                 onChange={change}
               />
